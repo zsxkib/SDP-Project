@@ -1,0 +1,64 @@
+Super category,Category,Notes,Recyclable?
+Aluminium foil,Aluminium foil,-,N
+Battery,Battery,-,N
+Blister pack,Aluminium blister pack,Containers used to store capsules (e.g. pills),N
+Blister pack,Carded blister pack,Paper-back package,N
+Bottle,Clear plastic bottle,Water and soft drink bottles made of PET,Y
+Bottle,Glass bottle,Includes beer and wine bottles,Y
+Bottle,Other plastic bottle,Opaque or translucent. Generally made of HDPE. Includes detergent bottles,"Y
+"
+Bottle cap,Plastic bottle cap,-,Y
+Bottle cap,Metal bottle cap,-,Y
+Broken glass,Broken glass,-,N
+Can,Aerosol,-,N
+Can,Drink can,Aluminium soda can,Y
+Can,Food can,Steel can,Y
+Carton,Corrugated carton,Includes cardboard boxes,Y
+Carton,Drink carton,Tetrapak composites,"Y
+"
+Carton,Egg carton,-,"Y
+"
+Carton,Meal carton,"Includes sandwich boxes, paper plates, take-out boxes",N
+Carton,Pizza box,-,N
+Carton,Toilet tube,-,Y
+Carton,Other carton,Paperboard boxes,Y
+Cigarette,Cigarette,Cigarette butts,N
+Cup,Paper cup,-,N
+Cup,Disposable plastic cup,Generally made of PET,Y
+Cup,Foam cup,Polystyrene Cup,Y
+Cup,Glass cup,-,Y
+Cup,Other plastic cup,"Reusable plastic cups, thicker than disposable ones",Y
+Food waste,Food waste,-,N
+Glass jar,Glass jar,-,Y
+Lid,Plastic lid,Includes cup lids,Y
+Lid,Metal lid,Generally glass jar lids,Y
+Paper,Normal paper,-,Y
+Paper,Tissues,-,N
+Paper,Wrapping paper,-,N
+Paper,Magazine paper,Plastified paper used in catalogues,Y
+Paper bag,Paper bag,Brown bag,Y
+Paper bag,Plastified paper bag,Bakery bags that come with transparent film,N
+Plastic bag & wrapper,Garbage bag,-,N
+Plastic bag & wrapper,Single-use carrier bag,-,N
+Plastic bag & wrapper,Polypropylene bag,Reusable bags,N
+Plastic bag & wrapper,Plastic Film,"May be transparent or opaque. Inludes bread bags, cereal bags and produce bags",N
+Plastic bag & wrapper,Six pack rings,-,N
+Plastic bag & wrapper,Crisp packet,So common that it needs its own category,N
+Plastic bag & wrapper,Other plastic wrapper,"Can be made of aluminium. Includes candy wrappers, retort pouches and yoghurt lids",N
+Plastic container,Spread tub,Includes margarine tubs and yoghurt pots,N
+Plastic container,Tupperware,HDPE microwavable tub,N
+Plastic container,Disposable food container,Includes black trays and PET containers,N
+Plastic container,Foam food container,Styrofoam takeaway boxes,N
+Plastic container,Other plastic container,-,N
+Plastic glooves,Plastic glooves,-,N
+Plastic utensils,Plastic utensils,-,N
+Pop tab,Pop tab,-,N
+Rope,Rope,Includes fishing nets,N
+Scrap metal,Scrap metal,Includes all metal except cans,N
+Shoe,Shoe,-,N
+Squeezable tube,Squeezable tube,Includes toothpaste and glue tubes,N
+Straw,Plastic straw,-,N
+Straw,Paper straw,-,N
+Styrofoam piece,Styrofoam piece,-,N
+Other plastic,Other plastic,Includes other objects or fragments made of plastic,N
+Unlabeled litter,Unlabeled litter,Unknown object of unknown material. Any ambiguous object.,N
