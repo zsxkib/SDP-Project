@@ -1,0 +1,8 @@
+loading datasets and models...
+train KNNClassifier(Resnet50(weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/train, 256, 256)
+test KNNClassifier(Resnet50(weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.884999999995575
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            89.0        11.0
+recyclable                12.0        88.0
