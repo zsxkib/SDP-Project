@@ -1,0 +1,89 @@
+loading datasets and models...
+grid searching best combination...
+0 KNNClassifier(Resnet("resnet18"), k=1)
+train KNNClassifier(Resnet(resnet18, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/train, 256, 256)
+test KNNClassifier(Resnet(resnet18, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.855
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            82.0        18.0
+recyclable                11.0        89.0
+
+1 KNNClassifier(Resnet("resnet34"), k=1)
+train KNNClassifier(Resnet(resnet34, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/train, 256, 256)
+test KNNClassifier(Resnet(resnet34, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.875
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            88.0        12.0
+recyclable                13.0        87.0
+
+2 KNNClassifier(Resnet("resnet50"), k=1)
+train KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/train, 256, 256)
+test KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.885
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            89.0        11.0
+recyclable                12.0        88.0
+
+3 LogRegClassifier(Resnet("resnet18"), max_iter=1000)
+train LogRegClassifier(Resnet(resnet18, weights=None), {'max_iter': 1000}) on DirDataset(demo1-dataset/train, 256, 256)
+fitting logreg model...
+test LogRegClassifier(Resnet(resnet18, weights=None), {'max_iter': 1000}) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.89
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            93.0         7.0
+recyclable                15.0        85.0
+
+4 LogRegClassifier(Resnet("resnet34"), max_iter=1000)
+train LogRegClassifier(Resnet(resnet34, weights=None), {'max_iter': 1000}) on DirDataset(demo1-dataset/train, 256, 256)
+fitting logreg model...
+test LogRegClassifier(Resnet(resnet34, weights=None), {'max_iter': 1000}) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.85
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            86.0        14.0
+recyclable                16.0        84.0
+
+5 LogRegClassifier(Resnet("resnet50"), max_iter=1000)
+train LogRegClassifier(Resnet(resnet50, weights=None), {'max_iter': 1000}) on DirDataset(demo1-dataset/train, 256, 256)
+fitting logreg model...
+test LogRegClassifier(Resnet(resnet50, weights=None), {'max_iter': 1000}) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.875
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            87.0        13.0
+recyclable                12.0        88.0
+
+6 GMMClassifier(Resnet("resnet18"), n_components=5, covariance_type="full")
+train GMMClassifier(Resnet(resnet18, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
+fitting a gmm on each label...
+test GMMClassifier(Resnet(resnet18, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.585
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            99.0         1.0
+recyclable                82.0        18.0
+
+7 GMMClassifier(Resnet("resnet34"), n_components=5, covariance_type="full")
+train GMMClassifier(Resnet(resnet34, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
+fitting a gmm on each label...
+test GMMClassifier(Resnet(resnet34, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.71
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            97.0         3.0
+recyclable                55.0        45.0
+
+8 GMMClassifier(Resnet("resnet50"), n_components=5, covariance_type="full")
+train GMMClassifier(Resnet(resnet50, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
+fitting a gmm on each label...
+test GMMClassifier(Resnet(resnet50, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.82
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            97.0         3.0
+recyclable                33.0        67.0
+

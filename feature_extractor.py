@@ -12,23 +12,25 @@ class Lambda(nn.Module):
     def identity(x):
         return x
 
-class Resnet50():
-    def __init__(self, device='cuda', weights=None):
+class Resnet():
+    def __init__(self, model_name, device='cuda', weights=None):
+        self.model_name = model_name
         self.device = device
-        self.resnet50 = models.resnet50(pretrained=True).eval().to(device)
+        self.resnet = getattr(models, model_name)(pretrained=True).eval().to(device)
         # replace last layer with identity
-        self.resnet50.fc = Lambda(Lambda.identity)
+        self.n_dim = self.resnet.fc.in_features
+        self.resnet.fc = Lambda(Lambda.identity)
         self.weights = weights
         if weights is not None:
-            self.resnet50.load_state_dict(torch.load(weights, map_location=device))
+            self.resnet.load_state_dict(torch.load(weights, map_location=device))
     
     def __repr__(self):
-        return f'Resnet50(weights={self.weights})'
+        return f'Resnet({self.model_name}, weights={self.weights})'
 
     def extract(self, images):
         # images: N x Height x Width x Channel
         x = torch.FloatTensor(images).permute(0, 3, 1, 2).to(self.device)
         with torch.no_grad():
             # average across images to get one single feature vector
-            y = self.resnet50(x).detach().cpu().numpy().mean(0)
+            y = self.resnet(x).detach().cpu().numpy().mean(0)
         return y

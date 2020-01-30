@@ -1,7 +1,6 @@
 from web_client import WebClient
 from camera import Camera
 import time
-import lycon
 
 client = WebClient('http://localhost:5000')
 camera_top = Camera('1.1.3') # when installing make sure the usb port ids match

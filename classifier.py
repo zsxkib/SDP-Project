@@ -1,18 +1,35 @@
+from sklearn.linear_model import LogisticRegression
+from sklearn.mixture import GaussianMixture
 from scipy.stats import mode
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
 
-class DummyClassifier():
-    def __init__(self):
-        pass
-    
+class FeatureExtractorClassifier():
+    def __init__(self, feature_extractor):
+        self.f = feature_extractor
+        self.item_vectors = []
+        self.item_labels = []
+
     def __repr__(self):
-        return 'DummyClassifier()'
+        return f'FeatureExtractorClassifier({self.f})'
+
+    def train_feature_vector(self, image):
+        return self.f.extract(image[None])
+
+    def feature_vector(self, data):
+        return self.f.extract(np.stack([
+            data['image_top'],
+            data['image_side'],
+        ]))
 
     def train(self, dataset):
         print('train', self, 'on', dataset)
         self.trainset = dataset # include the trainset so the images are processed correctly on testing
+        self.labelset = sorted(dataset.label_set())
+        for image, label in tqdm(dataset, desc='extracting features'):
+            self.item_vectors.append( self.train_feature_vector(image) )
+            self.item_labels.append( label )
 
     def classify(self, data, preprocess=True):
         assert hasattr(self, 'trainset'), 'model not trained'
@@ -22,14 +39,13 @@ class DummyClassifier():
         return 'unknown'
 
     def update(self, label):
-        return 'updated'
-    
+        return 'not updated - method not implemented'
+
     def test(self, dataset, update=False):
         print('test', self, 'on', dataset)
-        labels = list( dataset.label_set() )
-        confusion_matrix = pd.DataFrame(np.zeros((len(labels), len(labels))))
-        confusion_matrix.columns = labels
-        confusion_matrix.index = labels
+        confusion_matrix = pd.DataFrame(np.zeros((len(self.labelset), len(self.labelset))))
+        confusion_matrix.columns = self.labelset
+        confusion_matrix.index = self.labelset
         n_correct = n_total = 0
         for image, correct_label in tqdm(dataset, desc='testing'):
             # since our dataset only has images from one angle per item, use it twice and pretend it's from two angles
@@ -38,26 +54,25 @@ class DummyClassifier():
             if update:
                 self.update(correct_label)
             confusion_matrix.iloc[
-                labels.index(correct_label),
-                labels.index(predict_label),
+                self.labelset.index(correct_label),
+                self.labelset.index(predict_label),
             ] += 1
             if correct_label == predict_label:
                 n_correct += 1
             n_total += 1
-        accuracy = (n_correct / (n_total + 1e-9))
+        accuracy = n_correct / n_total if n_total > 0 else 0
         print('accuracy', accuracy)
         print('confusion matrix')
         print(confusion_matrix)
         return accuracy, confusion_matrix
 
-class KNNClassifier(DummyClassifier):
+
+class KNNClassifier(FeatureExtractorClassifier):
     def __init__(self, feature_extractor, threshold=0.8, k=1):
-        self.f = feature_extractor
+        super().__init__(feature_extractor)
         self.t = threshold
         self.k = k
-        self.item_vectors = []
-        self.item_labels = []
-    
+
     def __repr__(self):
         return f'KNNClassifier({self.f}, threshold={self.t}, k={self.k})'
 
@@ -69,21 +84,6 @@ class KNNClassifier(DummyClassifier):
         query_vector = query_vector.reshape(D, 1)
         query_vector /= 1e-9 + np.linalg.norm(query_vector)
         return (item_vectors @ query_vector).reshape(N)
-
-    def train(self, dataset):
-        super().train(dataset)
-        for image, label in tqdm(dataset, desc='training'):
-            self.item_vectors.append( self.train_feature_vector(image) )
-            self.item_labels.append( label )
-    
-    def train_feature_vector(self, image):
-        return self.f.extract(image[None])
-
-    def feature_vector(self, data):
-        return self.f.extract(np.stack([
-            data['image_top'],
-            data['image_side'],
-        ]))
 
     def classify(self, data, preprocess=True):
         super().classify(data, preprocess=preprocess)
@@ -101,3 +101,53 @@ class KNNClassifier(DummyClassifier):
         self.item_vectors.append(self.last_v)
         self.item_labels.append(label)
         return 'updated'
+
+
+class LogRegClassifier(FeatureExtractorClassifier):
+    def __init__(self, feature_extractor, **params):
+        super().__init__(feature_extractor)
+        self.params = params
+        self.l = LogisticRegression(**params)
+
+    def __repr__(self):
+        return f'LogRegClassifier({self.f}, {self.params})'
+
+    def train(self, dataset):
+        super().train(dataset)
+        X = self.item_vectors
+        y = [self.labelset.index(l) for l in self.item_labels]
+        print('fitting logreg model...')
+        self.l.fit(X, y)
+
+    def classify(self, data, preprocess=True):
+        super().classify(data, preprocess=preprocess)
+        x = self.feature_vector(data)
+        y = self.l.predict(x[None])[0] # extend dummy batch axis, then reduce it
+        return self.labelset[y]
+
+class GMMClassifier(FeatureExtractorClassifier):
+    def __init__(self, feature_extractor, **params):
+        super().__init__(feature_extractor)
+        self.params = params
+
+    def __repr__(self):
+        return f'GMMClassifier({self.f}, {self.params})'
+
+    def train(self, dataset):
+        super().train(dataset)
+        print('fitting a gmm on positive label...')
+        self.gmms = [
+            GaussianMixture(**self.params).fit([
+                v for v, l_ in zip(self.item_vectors, self.item_labels) if l == l_
+            ])
+            for l in self.labelset
+        ]
+
+    def classify(self, data, preprocess=True):
+        super().classify(data, preprocess=preprocess)
+        x = self.feature_vector(data)
+        scores = np.array([
+            gmm.score(x[None]) for gmm in self.gmms
+        ])
+        y = scores.argmax()
+        return self.labelset[y]
