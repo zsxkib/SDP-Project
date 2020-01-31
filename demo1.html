@@ -1,0 +1,51 @@
+<html>
+<head>
+<style>
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin: 10%;
+}
+
+h1 {
+  font-size: 100px;
+  font-family: "sans-serif";
+}
+
+h2 {
+  font-size: 30px;
+  font-family: "serif";
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="row">
+
+<div class="column">
+<h2> Image from top camera </h2>
+<img id="image_top" src="file/top.png">
+</div>
+
+<div class="column">
+<h2> Image from side camera </h2>
+<img id="image_side" src="file/side.png">
+</div>
+
+</div>
+
+<div id="row">
+<h1 id="prediction" > {pred_label} </h2>
+</div>
+
+</body>
+</html>
