@@ -1,0 +1,32 @@
+loading datasets and models...
+grid searching best combination...
+0 VoteEnsembleClassifier(
+    KNNClassifier(Resnet("resnet50"), k=1),
+    SklearnClassifier(Resnet("resnet18"), LogisticRegression(max_iter=1000)),
+    SklearnClassifier(Resnet("resnet50"), GaussianNB()),
+)
+train VoteEnsembleClassifier(KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1), SklearnClassifier(Resnet(resnet18, weights=None), LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=1000,
+                   multi_class='auto', n_jobs=None, penalty='l2',
+                   random_state=None, solver='lbfgs', tol=0.0001, verbose=0,
+                   warm_start=False)), SklearnClassifier(Resnet(resnet50, weights=None), GaussianNB(priors=None, var_smoothing=1e-09))) on DirDataset(demo1-dataset/train, 256, 256)
+train KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/train, 256, 256)
+train SklearnClassifier(Resnet(resnet18, weights=None), LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=1000,
+                   multi_class='auto', n_jobs=None, penalty='l2',
+                   random_state=None, solver='lbfgs', tol=0.0001, verbose=0,
+                   warm_start=False)) on DirDataset(demo1-dataset/train, 256, 256)
+fitting sklearn model...
+train SklearnClassifier(Resnet(resnet50, weights=None), GaussianNB(priors=None, var_smoothing=1e-09)) on DirDataset(demo1-dataset/train, 256, 256)
+fitting sklearn model...
+test VoteEnsembleClassifier(KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1), SklearnClassifier(Resnet(resnet18, weights=None), LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=1000,
+                   multi_class='auto', n_jobs=None, penalty='l2',
+                   random_state=None, solver='lbfgs', tol=0.0001, verbose=0,
+                   warm_start=False)), SklearnClassifier(Resnet(resnet50, weights=None), GaussianNB(priors=None, var_smoothing=1e-09))) on DirDataset(demo1-dataset/test1, 256, 256)
+accuracy 0.905
+confusion matrix
+                non-recyclable  recyclable
+non-recyclable            92.0         8.0
+recyclable                11.0        89.0
+

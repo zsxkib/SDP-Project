@@ -12,7 +12,8 @@ grid = [
     c.format(e)
     for c in [
         'KNNClassifier({}, k=1)',
-        'LogRegClassifier({}, max_iter=1000)',
+        'SklearnClassifier({}, LogisticRegression(max_iter=1000))',
+        'SklearnClassifier({}, GaussianNB())',
         'GMMClassifier({}, n_components=5, covariance_type="full")',
     ]
     for e in [
@@ -21,6 +22,13 @@ grid = [
         'Resnet("resnet50")',
     ]
 ]
+#grid = []
+#grid.append('''\
+#VoteEnsembleClassifier(
+#    KNNClassifier(Resnet("resnet50"), k=1),
+#    SklearnClassifier(Resnet("resnet18"), LogisticRegression(max_iter=1000)),
+#    SklearnClassifier(Resnet("resnet50"), GaussianNB()),
+#)''')
 
 for i, g in enumerate(grid):
     print(i, g, flush=True)

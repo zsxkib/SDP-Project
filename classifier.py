@@ -1,35 +1,16 @@
-from sklearn.linear_model import LogisticRegression
-from sklearn.mixture import GaussianMixture
+from sklearn.naive_bayes import *
+from sklearn.linear_model import *
+from sklearn.mixture import *
 from scipy.stats import mode
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
 
-class FeatureExtractorClassifier():
-    def __init__(self, feature_extractor):
-        self.f = feature_extractor
-        self.item_vectors = []
-        self.item_labels = []
-
-    def __repr__(self):
-        return f'FeatureExtractorClassifier({self.f})'
-
-    def train_feature_vector(self, image):
-        return self.f.extract(image[None])
-
-    def feature_vector(self, data):
-        return self.f.extract(np.stack([
-            data['image_top'],
-            data['image_side'],
-        ]))
-
+class BaseClassifier():
     def train(self, dataset):
         print('train', self, 'on', dataset)
         self.trainset = dataset # include the trainset so the images are processed correctly on testing
         self.labelset = sorted(dataset.label_set())
-        for image, label in tqdm(dataset, desc='extracting features'):
-            self.item_vectors.append( self.train_feature_vector(image) )
-            self.item_labels.append( label )
 
     def classify(self, data, preprocess=True):
         assert hasattr(self, 'trainset'), 'model not trained'
@@ -65,6 +46,31 @@ class FeatureExtractorClassifier():
         print('confusion matrix')
         print(confusion_matrix)
         return accuracy, confusion_matrix
+
+
+class FeatureExtractorClassifier(BaseClassifier):
+    def __init__(self, feature_extractor):
+        self.f = feature_extractor
+        self.item_vectors = []
+        self.item_labels = []
+
+    def __repr__(self):
+        return f'FeatureExtractorClassifier({self.f})'
+
+    def train_feature_vector(self, image):
+        return self.f.extract(image[None])
+
+    def feature_vector(self, data):
+        return self.f.extract(np.stack([
+            data['image_top'],
+            data['image_side'],
+        ]))
+
+    def train(self, dataset):
+        super().train(dataset)
+        for image, label in tqdm(dataset, desc='extracting features'):
+            self.item_vectors.append( self.train_feature_vector(image) )
+            self.item_labels.append( label )
 
 
 class KNNClassifier(FeatureExtractorClassifier):
@@ -103,20 +109,19 @@ class KNNClassifier(FeatureExtractorClassifier):
         return 'updated'
 
 
-class LogRegClassifier(FeatureExtractorClassifier):
-    def __init__(self, feature_extractor, **params):
+class SklearnClassifier(FeatureExtractorClassifier):
+    def __init__(self, feature_extractor, sklearn_classifier):
         super().__init__(feature_extractor)
-        self.params = params
-        self.l = LogisticRegression(**params)
+        self.l = sklearn_classifier
 
     def __repr__(self):
-        return f'LogRegClassifier({self.f}, {self.params})'
+        return f'SklearnClassifier({self.f}, {self.l})'
 
     def train(self, dataset):
         super().train(dataset)
         X = self.item_vectors
         y = [self.labelset.index(l) for l in self.item_labels]
-        print('fitting logreg model...')
+        print('fitting sklearn model...')
         self.l.fit(X, y)
 
     def classify(self, data, preprocess=True):
@@ -151,3 +156,27 @@ class GMMClassifier(FeatureExtractorClassifier):
         ])
         y = scores.argmax()
         return self.labelset[y]
+
+
+class VoteEnsembleClassifier(BaseClassifier):
+    def __init__(self, *cfers):
+        self.cfers = cfers
+
+    def __repr__(self):
+        return 'VoteEnsembleClassifier({})'.format( ', '.join(map(str, self.cfers)) )
+
+    def train(self, dataset):
+        super().train(dataset)
+        for cfer in self.cfers:
+            cfer.train(dataset)
+
+    def classify(self, data, preprocess=True):
+        super().classify(data, preprocess=preprocess)
+        labels = []
+        for cfer in self.cfers:
+            labels.append( cfer.classify(data, preprocess=preprocess) )
+        return mode(labels).mode[0] # each component classifier has a vote, return the most voted label
+
+    def update(self, label):
+        for cfer in self.cfers:
+            cfer.update(label)
