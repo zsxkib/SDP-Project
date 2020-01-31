@@ -1,5 +1,5 @@
 Super category,Category,Notes,Recyclable?
-Aluminium foil,Aluminium foil,-,N
+Aluminium foil,Aluminium foil,-,Y
 Battery,Battery,-,N
 Blister pack,Aluminium blister pack,Containers used to store capsules (e.g. pills),N
 Blister pack,Carded blister pack,Paper-back package,N
@@ -10,7 +10,7 @@ Bottle,Other plastic bottle,Opaque or translucent. Generally made of HDPE. Inclu
 Bottle cap,Plastic bottle cap,-,Y
 Bottle cap,Metal bottle cap,-,Y
 Broken glass,Broken glass,-,N
-Can,Aerosol,-,N
+Can,Aerosol,-,Y
 Can,Drink can,Aluminium soda can,Y
 Can,Food can,Steel can,Y
 Carton,Corrugated carton,Includes cardboard boxes,Y
