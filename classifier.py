@@ -174,7 +174,7 @@ class VoteEnsembleClassifier(BaseClassifier):
         super().classify(data, preprocess=preprocess)
         labels = []
         for cfer in self.cfers:
-            labels.append( cfer.classify(data, preprocess=preprocess) )
+            labels.append( cfer.classify(data, preprocess=False) ) # avoid preprocessing twice
         return mode(labels).mode[0] # each component classifier has a vote, return the most voted label
 
     def update(self, label):
