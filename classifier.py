@@ -140,7 +140,7 @@ class GMMClassifier(FeatureExtractorClassifier):
 
     def train(self, dataset):
         super().train(dataset)
-        print('fitting a gmm on positive label...')
+        print('fitting a gmm on each label...')
         self.gmms = [
             GaussianMixture(**self.params).fit([
                 v for v, l_ in zip(self.item_vectors, self.item_labels) if l == l_

@@ -113,7 +113,7 @@ recyclable                14.0        86.0
 
 9 GMMClassifier(Resnet("resnet18"), n_components=5, covariance_type="full")
 train GMMClassifier(Resnet(resnet18, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
-fitting a gmm on positive label...
+fitting a gmm on each label...
 test GMMClassifier(Resnet(resnet18, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.575
 confusion matrix
@@ -123,7 +123,7 @@ recyclable                85.0        15.0
 
 10 GMMClassifier(Resnet("resnet34"), n_components=5, covariance_type="full")
 train GMMClassifier(Resnet(resnet34, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
-fitting a gmm on positive label...
+fitting a gmm on each label...
 test GMMClassifier(Resnet(resnet34, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.72
 confusion matrix
@@ -133,7 +133,7 @@ recyclable                53.0        47.0
 
 11 GMMClassifier(Resnet("resnet50"), n_components=5, covariance_type="full")
 train GMMClassifier(Resnet(resnet50, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
-fitting a gmm on positive label...
+fitting a gmm on each label...
 test GMMClassifier(Resnet(resnet50, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.83
 confusion matrix
