@@ -1,11 +1,13 @@
 from feature_extractor import *
 from classifier import *
 from dataset import *
+import numpy as np
 import pickle
 
 print('loading datasets and models...')
 train_ds = DirDataset('demo1-dataset/train', 256, 256)
 test_ds = DirDataset('demo1-dataset/test1', 256, 256)
+seed = 42
 
 print('grid searching best combination...')
 grid = [
@@ -31,6 +33,7 @@ grid = [
 #)''')
 
 for i, g in enumerate(grid):
+    np.random.seed(seed)
     print(i, g, flush=True)
     cfer = eval(g)
     cfer.train(train_ds)

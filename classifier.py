@@ -24,9 +24,10 @@ class BaseClassifier():
 
     def test(self, dataset, update=False):
         print('test', self, 'on', dataset)
-        confusion_matrix = pd.DataFrame(np.zeros((len(self.labelset), len(self.labelset))))
-        confusion_matrix.columns = self.labelset
-        confusion_matrix.index = self.labelset
+        N = len(self.labelset)
+        confusion_matrix = pd.DataFrame(np.zeros(( N + 1, N + 1 )))
+        confusion_matrix.columns = self.labelset + ['accuracy']
+        confusion_matrix.index = self.labelset + ['recall']
         n_correct = n_total = 0
         for image, correct_label in tqdm(dataset, desc='testing'):
             # since our dataset only has images from one angle per item, use it twice and pretend it's from two angles
@@ -35,12 +36,20 @@ class BaseClassifier():
             if update:
                 self.update(correct_label)
             confusion_matrix.iloc[
-                self.labelset.index(correct_label),
                 self.labelset.index(predict_label),
+                self.labelset.index(correct_label),
             ] += 1
             if correct_label == predict_label:
                 n_correct += 1
             n_total += 1
+        confusion_matrix.loc[self.labelset, 'accuracy'] = (
+            confusion_matrix.values[range(N), range(N)]
+          / confusion_matrix.values[:N, :N].sum(1)
+        )
+        confusion_matrix.loc['recall', self.labelset] = (
+            confusion_matrix.values[range(N), range(N)]
+          / confusion_matrix.values[:N, :N].sum(0)
+        )
         accuracy = n_correct / n_total if n_total > 0 else 0
         print('accuracy', accuracy)
         print('confusion matrix')

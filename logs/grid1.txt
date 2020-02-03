@@ -5,27 +5,30 @@ train KNNClassifier(Resnet(resnet18, weights=None), threshold=0.8, k=1) on DirDa
 test KNNClassifier(Resnet(resnet18, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.855
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            82.0        18.0
-recyclable                11.0        89.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           82.00       11.00  0.881720
+recyclable               18.00       89.00  0.831776
+recall                    0.82        0.89  0.000000
 
 1 KNNClassifier(Resnet("resnet34"), k=1)
 train KNNClassifier(Resnet(resnet34, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/train, 256, 256)
 test KNNClassifier(Resnet(resnet34, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.875
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            88.0        12.0
-recyclable                13.0        87.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           88.00       13.00  0.871287
+recyclable               12.00       87.00  0.878788
+recall                    0.88        0.87  0.000000
 
 2 KNNClassifier(Resnet("resnet50"), k=1)
 train KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/train, 256, 256)
 test KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.885
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            89.0        11.0
-recyclable                12.0        88.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           89.00       12.00  0.881188
+recyclable               11.00       88.00  0.888889
+recall                    0.89        0.88  0.000000
 
 3 SklearnClassifier(Resnet("resnet18"), LogisticRegression(max_iter=1000))
 train SklearnClassifier(Resnet(resnet18, weights=None), LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
@@ -41,9 +44,10 @@ test SklearnClassifier(Resnet(resnet18, weights=None), LogisticRegression(C=1.0,
                    warm_start=False)) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.89
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            93.0         7.0
-recyclable                15.0        85.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           93.00       15.00  0.861111
+recyclable                7.00       85.00  0.923913
+recall                    0.93        0.85  0.000000
 
 4 SklearnClassifier(Resnet("resnet34"), LogisticRegression(max_iter=1000))
 train SklearnClassifier(Resnet(resnet34, weights=None), LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
@@ -59,9 +63,10 @@ test SklearnClassifier(Resnet(resnet34, weights=None), LogisticRegression(C=1.0,
                    warm_start=False)) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.85
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            86.0        14.0
-recyclable                16.0        84.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           86.00       16.00  0.843137
+recyclable               14.00       84.00  0.857143
+recall                    0.86        0.84  0.000000
 
 5 SklearnClassifier(Resnet("resnet50"), LogisticRegression(max_iter=1000))
 train SklearnClassifier(Resnet(resnet50, weights=None), LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
@@ -77,9 +82,10 @@ test SklearnClassifier(Resnet(resnet50, weights=None), LogisticRegression(C=1.0,
                    warm_start=False)) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.875
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            87.0        13.0
-recyclable                12.0        88.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           87.00       12.00  0.878788
+recyclable               13.00       88.00  0.871287
+recall                    0.87        0.88  0.000000
 
 6 SklearnClassifier(Resnet("resnet18"), GaussianNB())
 train SklearnClassifier(Resnet(resnet18, weights=None), GaussianNB(priors=None, var_smoothing=1e-09)) on DirDataset(demo1-dataset/train, 256, 256)
@@ -87,9 +93,10 @@ fitting sklearn model...
 test SklearnClassifier(Resnet(resnet18, weights=None), GaussianNB(priors=None, var_smoothing=1e-09)) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.82
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            79.0        21.0
-recyclable                15.0        85.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           79.00       15.00  0.840426
+recyclable               21.00       85.00  0.801887
+recall                    0.79        0.85  0.000000
 
 7 SklearnClassifier(Resnet("resnet34"), GaussianNB())
 train SklearnClassifier(Resnet(resnet34, weights=None), GaussianNB(priors=None, var_smoothing=1e-09)) on DirDataset(demo1-dataset/train, 256, 256)
@@ -97,9 +104,10 @@ fitting sklearn model...
 test SklearnClassifier(Resnet(resnet34, weights=None), GaussianNB(priors=None, var_smoothing=1e-09)) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.805
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            75.0        25.0
-recyclable                14.0        86.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           75.00       14.00  0.842697
+recyclable               25.00       86.00  0.774775
+recall                    0.75        0.86  0.000000
 
 8 SklearnClassifier(Resnet("resnet50"), GaussianNB())
 train SklearnClassifier(Resnet(resnet50, weights=None), GaussianNB(priors=None, var_smoothing=1e-09)) on DirDataset(demo1-dataset/train, 256, 256)
@@ -107,29 +115,32 @@ fitting sklearn model...
 test SklearnClassifier(Resnet(resnet50, weights=None), GaussianNB(priors=None, var_smoothing=1e-09)) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.84
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            82.0        18.0
-recyclable                14.0        86.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           82.00       14.00  0.854167
+recyclable               18.00       86.00  0.826923
+recall                    0.82        0.86  0.000000
 
 9 GMMClassifier(Resnet("resnet18"), n_components=5, covariance_type="full")
 train GMMClassifier(Resnet(resnet18, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
 fitting a gmm on each label...
 test GMMClassifier(Resnet(resnet18, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
-accuracy 0.575
+accuracy 0.685
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable           100.0         0.0
-recyclable                85.0        15.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           99.00       62.00  0.614907
+recyclable                1.00       38.00  0.974359
+recall                    0.99        0.38  0.000000
 
 10 GMMClassifier(Resnet("resnet34"), n_components=5, covariance_type="full")
 train GMMClassifier(Resnet(resnet34, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
 fitting a gmm on each label...
 test GMMClassifier(Resnet(resnet34, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
-accuracy 0.72
+accuracy 0.705
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            97.0         3.0
-recyclable                53.0        47.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           88.00       47.00  0.651852
+recyclable               12.00       53.00  0.815385
+recall                    0.88        0.53  0.000000
 
 11 GMMClassifier(Resnet("resnet50"), n_components=5, covariance_type="full")
 train GMMClassifier(Resnet(resnet50, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/train, 256, 256)
@@ -137,7 +148,8 @@ fitting a gmm on each label...
 test GMMClassifier(Resnet(resnet50, weights=None), {'n_components': 5, 'covariance_type': 'full'}) on DirDataset(demo1-dataset/test1, 256, 256)
 accuracy 0.83
 confusion matrix
-                non-recyclable  recyclable
-non-recyclable            91.0         9.0
-recyclable                25.0        75.0
+                non-recyclable  recyclable  accuracy
+non-recyclable           82.00       16.00  0.836735
+recyclable               18.00       84.00  0.823529
+recall                    0.82        0.84  0.000000
 
