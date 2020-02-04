@@ -42,12 +42,12 @@ def stop_motors():
 def hatch():
     #open hatch
     mc.move_motor(h1,-80)
-    sleep(1)
+    sleep(1.2)
     mc.stop_motors()
     sleep(1)
     #close hatch
     mc.move_motor(h1,80)
-    sleep(1)
+    sleep(1.2)
     mc.stop_motors()
 
 
