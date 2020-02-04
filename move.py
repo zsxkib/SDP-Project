@@ -8,17 +8,12 @@ r1 = 4
 r2 = 5
 h1 = 1
 h2 = 0
+###################### global variables #######################
+mc = Motors()
 ###############################################################
 
-#f1,f2- front motors 1&2
-#r1,r2- rear motors 1&2
 #time in second
-def move_front(timer): #front and rear motor_id
-    mc = Motors()
-
-    #motor_id=1
-    #speed=100 #speed is from 0 to 100
-    run_time=timer
+def move_front(timer):
 
     #mc.move_motor(motor_id, speed)
     mc.move_motor(f1,-100)
@@ -26,20 +21,11 @@ def move_front(timer): #front and rear motor_id
     mc.move_motor(r1,100)
     mc.move_motor(r2,100)
 
-    start_time = time()
-    while time() < start_time+run_time:
-        sleep(0.1) #has 50ms accuracy
+    sleep(timer)
     mc.stop_motors()
 
-#f1,f2- front motors 1&2
-#r1,r2- rear motors 1&2
 #time in second
-def move_back(timer): #front and rear motor_id
-    mc = Motors()
-
-    #motor_id=1
-    #speed=100 #speed is from 0 to 100
-    run_time=timer
+def move_back(timer):
 
     #mc.move_motor(motor_id, speed)
     mc.move_motor(f1,100)
@@ -47,31 +33,21 @@ def move_back(timer): #front and rear motor_id
     mc.move_motor(r1,-100)
     mc.move_motor(r2,-100)
 
-    start_time = time()
-    while time() < start_time+run_time:
-        sleep(0.1) #has 50ms accuracy
+    sleep(timer)
     mc.stop_motors()
 
 def stop_motors():
-    mc = Motors()
     mc.stop_motors()
 
 def hatch():
     #open hatch
-    mc = Motors()
-    run_time = 1
     mc.move_motor(h1,-80)
-    start_time = time()
-    while time() < start_time+run_time:
-        sleep(0.1) #has 50ms accuracy
+    sleep(1)
     mc.stop_motors()
     sleep(1)
     #close hatch
-    run_time = 1
     mc.move_motor(h1,80)
-    start_time = time()
-    while time() < start_time+run_time:
-        sleep(0.1) #has 50ms accuracy
+    sleep(1)
     mc.stop_motors()
 
 
