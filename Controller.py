@@ -48,15 +48,13 @@ class Controller():
                 if result_class in self.recycalbe:
                     # move machine to bin 1
                     print("The trash is recycable, dumping to bin 1")
-                    pass
-                    cmd = "move_forward.py"
+                    cmd = "move.py"
                     process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
                     output, error = process.communicate()
                 else:
                     # move machine to bin 2
                     print("The trash is non-recycable, dumping to bin 2")
-                    pass
-                    cmd = "move_backward.py"
+                    cmd = "move.py"
                     process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
                     output, error = process.communicate()
             else:
