@@ -192,7 +192,6 @@ function downscaleImage(dataUrl, newWidth) {
       
       setInterval(function () {
           if(queue.length > 0) {
-            queue.splice(0, 1)
             $.ajax({
               type: "POST",
               url: "http://212.71.237.145/upload/upload",
@@ -201,6 +200,7 @@ function downscaleImage(dataUrl, newWidth) {
               success: () => {
                 text = ' Your photo is uploaded.'
                 notification.append('<div class="success btn"><p><strong>Success:</strong>'+ text +'</p><span><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span></div>')
+                queue.splice(0, 1)
               }
             })
           }
