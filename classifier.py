@@ -1,5 +1,6 @@
 from sklearn.naive_bayes import *
 from sklearn.linear_model import *
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.mixture import *
 from scipy.stats import mode
 from tqdm import tqdm
@@ -81,6 +82,22 @@ class FeatureExtractorClassifier(BaseClassifier):
             self.item_vectors.append( self.train_feature_vector(image) )
             self.item_labels.append( label )
 
+class RandomForest(FeatureExtractorClassifier):
+    def __init__(self, feature_extractor, **params):
+        super().__init__(feature_extractor)
+        self.rc = RandomForestClassifier(**params)
+
+    def train(self, dataset):
+        super().train(dataset)
+        y = [self.labelset.index(l) for l in self.item_labels]
+        X = self.item_vectors
+        self.rc.train(X,y)
+
+    def classify(self, data, preprocess=True):
+        super().classify(data, preprocess=preprocess)
+        x = self.feature_vector(data)
+        y = self.l.predict(x[None])[0] # extend dummy batch axis, then reduce it
+        return self.labelset[y]
 
 class KNNClassifier(FeatureExtractorClassifier):
     def __init__(self, feature_extractor, threshold=0.8, k=1):
