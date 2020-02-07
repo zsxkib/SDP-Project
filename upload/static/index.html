@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>RecycloTron - Upload</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="script.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <h1>Upload photo</h1>
+  </header>
+  
+  <div class="ways" style="display: none;">
+    <ul>
+      <li class="active">
+        submit
+      </li>
+      <li>
+        discussion
+      </li>
+    </ul>
+  </div>
+  
+  <div class="sections">
+    
+    <section class="active">
+      <input type="text" placeholder="Title" id="title"/>
+
+      <select id="category">
+        <option value="Glass">Glass</option>
+        <option value="Paper">Paper</option>
+        <option value="Cardboard">Cardboard</option>
+        <option value="Plastic">Plastic</option>
+        <option value="Metal">Metal</option>
+        <option value="Trash">Trash</option>
+      </select>
+      
+      <div class="select-option">
+        <div class="head">Category</div>
+        <div class="option"></div>
+      </div>
+            
+      <div class="images">
+        <div class="pic">
+          add
+        </div>
+      </div>
+      
+      
+    </section>
+
+    <section>
+      <input type="text" placeholder="Topic" id="topic"/>
+      <textarea placeholder="something..." id="msg"></textarea>
+    </section>
+  
+  </div>
+  
+  <footer>
+    <ul>
+      <li><span id="reset">reset</span></li>
+      <li><span id="send">send</span></li>
+    </ul>
+  </footer> 
+  
+</div>
+<div class="notification"></div>
+<footer>
+  Adapted from: <a href="https://codepen.io/gapgag55/pen/ZBENwJ">codepen</a>
+</footer>
+</body>
+</html>
