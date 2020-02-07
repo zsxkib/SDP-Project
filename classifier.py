@@ -91,12 +91,12 @@ class RandomForest(FeatureExtractorClassifier):
         super().train(dataset)
         y = [self.labelset.index(l) for l in self.item_labels]
         X = self.item_vectors
-        self.rc.train(X,y)
+        self.rc.fit(X,y)
 
     def classify(self, data, preprocess=True):
         super().classify(data, preprocess=preprocess)
         x = self.feature_vector(data)
-        y = self.l.predict(x[None])[0] # extend dummy batch axis, then reduce it
+        y = self.rc.predict(x[None])[0] # extend dummy batch axis, then reduce it
         return self.labelset[y]
 
 class KNNClassifier(FeatureExtractorClassifier):

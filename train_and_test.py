@@ -13,10 +13,10 @@ print('grid searching best combination...')
 grid = [
     c.format(e)
     for c in [
-        'KNNClassifier({}, k=1)',
-        'SklearnClassifier({}, LogisticRegression(max_iter=1000))',
-        'SklearnClassifier({}, GaussianNB())',
-        'GMMClassifier({}, n_components=5, covariance_type="full")',
+#        'KNNClassifier({}, k=1)',
+#        'SklearnClassifier({}, LogisticRegression(max_iter=1000))',
+#        'SklearnClassifier({}, GaussianNB())',
+#        'GMMClassifier({}, n_components=5, covariance_type="full")',
         'RandomForest({})'
     ]
     for e in [
