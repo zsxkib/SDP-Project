@@ -14,3 +14,7 @@ Accuracy reported on the dataset might not correspond to the actual accuracy sin
 
 1) in the dataset we only have one image per item but on the bin we plan to have multiple images from different angles
 2) the backgroud, lighting condition and distribution of wastes in our bin may differ from the dataset
+
+
+### Trash photo website
+tinyurl.com/recyclotron-upload
