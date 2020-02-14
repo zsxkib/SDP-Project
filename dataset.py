@@ -23,6 +23,7 @@ class DirDataset():
         return (
             lycon.resize(lycon.load(self.files[i]), self.w, self.h) / 255,
             self.labels[i],
+            os.path.basename(self.files[i]),
         )
     
     def __iter__(self):

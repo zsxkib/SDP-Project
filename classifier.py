@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 
 class BaseClassifier():
-    def train(self, dataset):
+    def train(self, dataset, cache={}):
         print('train', self, 'on', dataset)
         self.trainset = dataset # include the trainset so the images are processed correctly on testing
         self.labelset = sorted(dataset.label_set())
@@ -23,17 +23,17 @@ class BaseClassifier():
     def update(self, label):
         return 'not updated - method not implemented'
 
-    def test(self, dataset, update=False):
+    def test(self, dataset, update=False, cache={}):
         print('test', self, 'on', dataset)
         N = len(self.labelset)
         confusion_matrix = pd.DataFrame(np.zeros(( N + 1, N + 1 )))
         confusion_matrix.columns = self.labelset + ['accuracy']
         confusion_matrix.index = self.labelset + ['recall']
         n_correct = n_total = 0
-        for image, correct_label in tqdm(dataset, desc='testing'):
+        for image, correct_label, filename in tqdm(dataset, desc='testing'):
             # since our dataset only has images from one angle per item, use it twice and pretend it's from two angles
             # no need to preprocess since images are already in right shape from the testset (assume it has the same config as trainset)
-            predict_label = self.classify(dict(image_top=image, image_side=image), preprocess=False)
+            predict_label = self.classify(dict(image_top=image, image_side=image), preprocess=False, cache_key=filename, cache=cache)
             if update:
                 self.update(correct_label)
             confusion_matrix.iloc[
@@ -67,19 +67,19 @@ class FeatureExtractorClassifier(BaseClassifier):
     def __repr__(self):
         return f'FeatureExtractorClassifier({self.f})'
 
-    def train_feature_vector(self, image):
-        return self.f.extract(image[None])
+    def train_feature_vector(self, image, filename, cache={}):
+        return self.f.extract(image[None], cache_key=filename, cache=cache)
 
-    def feature_vector(self, data):
+    def feature_vector(self, data, cache_key, cache):
         return self.f.extract(np.stack([
             data['image_top'],
             data['image_side'],
-        ]))
+        ]), cache_key=cache_key, cache=cache) # todo support multiple keys
 
-    def train(self, dataset):
+    def train(self, dataset, cache={}):
         super().train(dataset)
-        for image, label in tqdm(dataset, desc='extracting features'):
-            self.item_vectors.append( self.train_feature_vector(image) )
+        for image, label, filename in tqdm(dataset, desc='extracting features'):
+            self.item_vectors.append( self.train_feature_vector(image, filename, cache) )
             self.item_labels.append( label )
 
 class RandomForest(FeatureExtractorClassifier):
@@ -117,9 +117,9 @@ class KNNClassifier(FeatureExtractorClassifier):
         query_vector /= 1e-9 + np.linalg.norm(query_vector)
         return (item_vectors @ query_vector).reshape(N)
 
-    def classify(self, data, preprocess=True):
+    def classify(self, data, preprocess=True, cache_key=None, cache={}):
         super().classify(data, preprocess=preprocess)
-        v = self.last_v = self.feature_vector(data)
+        v = self.last_v = self.feature_vector(data, cache_key=cache_key, cache=cache)
         c = self.cossim(v)
         topk = c.argsort()[::-1][:self.k]
         topk_labels = [self.item_labels[i] for i in topk]
