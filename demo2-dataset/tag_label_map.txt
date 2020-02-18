@@ -312,7 +312,7 @@ waterbottle,plastic --> plastic
 waterbottle,plastic --> plastic
 viasantafe -->
 unknown -->
-universitytowncenter -->
+plastic --> trash
 twix -->
 tray -->
 toy -->
