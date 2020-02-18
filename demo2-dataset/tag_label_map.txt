@@ -1,24 +1,5 @@
-wrapper,paper --> paper
-wrapper,mcdonalds --> paper
-wrapper,cigarette --> paper
-wrapper,aluminum --> metal
-westernflorida,mt2 --> None
-westernflorida,coconutpoint --> None
-waterbottle,plastic --> plastic
-water,spa --> None
 spa,water --> None
-soda,metal --> None
-soda,fanta --> None
-soda,coke --> None
-soda,cocacola --> None
-slytherin,cigarette --> None
-saucecup,sauce --> None
-saucecup,plastic --> plastic
-redbull,metal --> metal
-redbull,energydrink --> None
-receipt,paper --> paper
 plasticbottle,waterbottle --> plastic
-plasticbottle,plastic --> plastic
 plastic,wrapper --> plastic
 plastic,wilhelmina --> None
 plastic,waterbottle --> plastic
@@ -30,286 +11,184 @@ plastic,soda --> plastic
 plastic,snickers --> plastic
 plastic,plasticlid --> plastic
 plastic,plasticbottle --> plastic
-plastic,narcos --> None
-plastic,marlboro --> None
-plastic,lid --> plastic
-plastic,lemonade --> None
-plastic,knetterbal --> None
-plastic,jumbo --> None
-plastic,juice --> None
-plastic,haribo --> None
-plastic,drinkcarton --> None
-plastic,dairy --> None
-plastic,confetti --> None
-plastic,chips --> 
-plastic,caprisun --> 
-plastic,candywrapper --> 
-plastic,bottlecap --> plastic
-plastic,beer --> 
-plastic,balloon --> 
-plastic,albertheijn --> 
-plastic,aadrink --> 
-plastic,5thingsclear --> 
 piece,plastic --> plastic
-piece,cardboard --> paper
-paper,wrapper --> plastic
+paper,wrapper --> paper
 paper,ticket --> paper
 paper,receipt --> plastic
 paper,plastic --> plastic
+paper,piece --> None
 pack,plastic --> plastic
 mt2,westernflorida --> None
-mt2,waterside --> 
-mt2,internationalplaza --> 
+mt2,waterside --> None
 metal,soda --> metal
 metal,slammers --> metal
 metal,redbull --> metal
-metal,heineken --> metal
-metal,amstel --> metal
-metal,alcohol --> metal
 mcdonalds,plastic --> plastic
 mcdonalds,paper --> paper
 marlboro,paper --> paper
 marlboro,pack --> paper
 lipton,plastic --> None
 lid,plastic --> plastic
-lemonade,plastic --> 
-label,plastic --> 
+lemonade,plastic --> None
+label,plastic --> None
 knetterbal,plastic --> plastic
-kinder,plastic --> 
-jumbo,plastic --> 
-juice,plastic --> 
-internationalplaza,westernflorida --> 
-internationalplaza,mt2 --> 
-icecream,wrapper --> 
-icecream,plastic --> 
-hufflepuff,cigarette --> 
+kinder,plastic --> None
+jumbo,plastic --> None
+juice,plastic --> None
+internationalplaza,westernflorida --> None
+internationalplaza,mt2 --> None
 heineken,metal --> metal
-haribo,plastic --> 
-goldenpower,metal --> 
-glove,plastic --> 
-glass,heineken --> 
-glass,bottle --> glass
-fork,plastic --> 
-food,wrapper --> 
-food,plastic --> 
-foil,wrapper --> 
-foil,plastic --> 
-fireworks,plastic --> 
-firework,plastic --> plastic
-firework,paper --> plastic
-fastfood,plastic --> 
-fastfood,paper --> 
-fastfood,mcdonalds --> 
-fanta,soda --> 
-fanta,metal --> 
-exposingtrash,plasticnevergoesaway --> recyclable
-energydrink,slammers --> metal
-energydrink,redbull --> 
-energydrink,plastic --> 
-energydrink,metal --> 
-energydrink,goldenpower --> 
-drinkpouch,plastic --> 
-drinkcarton,wicky --> 
+goldenpower,metal --> metal
+glass,heineken --> glass
+foil,wrapper --> metal
+fastfood,mcdonalds --> None
+fanta,soda --> None
+fanta,metal --> metal
+energydrink,slammers --> None
+energydrink,redbull --> None
+energydrink,plastic --> plastic
+energydrink,metal --> metal
+energydrink,goldenpower --> None
+drinkcarton,wicky --> paper
 drinkcarton,plastic --> plastic
-drinkcarton,lemonade --> 
-drinkcarton,juice --> 
-drink,soda --> 
+drinkcarton,lemonade --> paper
+drinkcarton,juice --> paper
+drink,soda --> None
 drink,plastic --> plastic
 drink,metal --> metal
-drink,mcdonalds --> 
-drink,energydrink --> 
-dairy,plastic --> 
-cutlery,plastic --> 
-cup,straw --> 
-cup,paper --> plastic
-cup,drink --> plastic
-cup,coffee --> 
-cottonbud,stick --> 
-cottonbud,plastic --> 
-cookie,wrapper --> plastic
-cookie,plastic --> 
-container,plastic --> 
+drink,mcdonalds --> None
+drink,energydrink --> None
+dairy,plastic --> None
+cup,drink --> None
 confetti,plastic --> plastic
-coke,soda --> 
-coke,plastic --> 
-coke,metal --> 
-coffeecup,plastic --> 
-coffeecup,paper --> 
-coffee,plastic --> 
-coffee,cup --> 
-coconutpoint,westernflorida --> 
-coconutpoint,mt2 --> 
-cocacola,soda --> 
-cocacola,plastic --> 
-cocacola,metal --> 
-cocacola,drink --> 
-cocacola,coke --> 
-cleaningcloth,microfibre --> 
-cigarettepack,paper --> 
+coke,soda --> None
+coke,plastic --> plastic
+coke,metal --> metal
+coconutpoint,westernflorida --> None
+coconutpoint,mt2 --> None
+cocacola,soda --> None
+cocacola,plastic --> plastic
+cocacola,metal --> metal
+cocacola,drink --> None
+cocacola,coke --> None
+cigarettepack,paper --> paper
 cigarettepack,marlboro --> 
-cigarettebutt,tobacco --> 
-cigarettebutt,plastic --> 
-cigarettebox,plastic --> 
-cigarettebox,paper --> 
-cigarettebox,marlboro --> 
+cigarettebox,paper --> paper
 cigarette,wrapper --> plastic
-cigarette,smoking --> 
-cigarette,slytherin --> 
-cigarette,plastic --> 
-cigarette,paper --> 
-cigarette,packaging --> 
-cigarette,pack --> 
-cigarette,marlboro --> 
+cigarette,slytherin --> None
+cigarette,paper --> None
+cigarette,packaging --> paper
+cigarette,pack --> paper
 cigarette,hufflepuff --> 
-cigarette,camel --> 
-chocolate,wrapper --> 
-chips,plastic --> 
-celluloseacetate,smoking --> 
-celluloseacetate,cigarettebutt --> 
-celluloseacetate,cigarette --> 
-ccrf,metal --> 
-ccrf,cocacola --> 
-cardboard,plastic --> 
-cardboard,piece --> 
-cardboard,pack --> 
-cardboard,mcdonalds --> 
-cardboard,firework --> 
-cardboard,cup --> 
-cardboard,cigarette --> 
-caprisun,plastic --> 
-caprisun,drinkpouch --> 
+ccrf,metal --> None
+ccrf,cocacola --> None
+cardboard,piece --> paper
+cardboard,pack --> paper
+cardboard,mcdonalds --> paper
+cardboard,firework --> paper
+cardboard,cup --> paper
+cardboard,cigarette --> paper
+caprisun,plastic --> None
+caprisun,drinkpouch --> None
 cap,plastic --> plastic
-candywrapper,plastic --> 
-candyman mac bubble,candyman mac bubble --> 
-candy,snickers --> 
+candy,snickers --> None
 candy,plastic --> plastic
-candy,paper --> 
-candy,haribo --> 
+candy,paper --> paper
+candy,haribo --> None
 candy,candywrapper --> plastic
-can,zwerfie --> 
+can,zwerfie --> None
 can,soda --> metal
-can,slammers --> 
-can,shredded --> 
-can,redbull --> 
-can,plastic --> plastic
-can,monster --> 
+can,slammers --> None
+can,shredded --> None
+can,redbull --> None
+can,plastic --> None
+can,monster --> None
 can,metal --> metal
-can,lipton --> 
+can,lipton --> None
 can,heineken --> metal
-can,grolsch --> 
+can,grolsch --> None
 can,goldenpower --> metal
-can,fernandes --> 
-can,fanta --> 
-can,export --> 
-can,energydrink --> 
+can,fernandes --> None
+can,fanta --> None
+can,export --> None
+can,energydrink --> None
 can,drink --> metal
 can,coke --> metal
-can,cocacola --> 
-can,ccrf --> 
-can,bullit --> 
-can,bavaria --> 
-can,aluminium --> 
-camel,cigarette --> 
-butt,plastic --> 
-bullit,metal --> 
-bullit,energydrink --> 
-bullit,can --> 
-box,cardboard --> 
+can,cocacola --> None
+can,ccrf --> None
+bullit,metal --> metal
+bullit,energydrink --> None
+bullit,can --> None
+box,cardboard --> paper
 bottlecap,plastic --> plastic
 bottlecap,metal --> metal
-bottlecap,heineken --> 
-bottlecap,drink --> 
-bottle,water --> 
-bottle,spa --> metal
-bottle,soda --> 
-bottle,plasticbottle --> 
-bottle,plastic --> recyclable
-bottle,juice --> 
-bottle,heineken --> 
+bottlecap,heineken --> None
+bottlecap,drink --> None
+bottle,water --> None
+bottle,spa --> None
+bottle,soda --> None
+bottle,plasticbottle --> plastic
+bottle,plastic --> plastic
+bottle,juice --> None
+bottle,heineken --> None
 bottle,glass --> glass
 bottle,energydrink --> metal
 bottle,drink --> None
 bottle,coke --> None
 bottle,cocacola --> None
-beer,plastic --> 
 beer,metal --> metal
 beer,heineken --> metal
-beer,grolsch --> 
-beer,glass --> 
-beer,export --> 
-beer,drink --> 
+beer,grolsch --> None
+beer,glass --> glass
+beer,export --> None
+beer,drink --> None
 beer,can --> metal
-beer,bottlecap --> 
+beer,bottlecap --> None
 beer,bottle --> None
-bavaria,metal --> 
-bavaria,can --> 
-bavaria,beer --> 
-balloon,rubber --> 
-balloon,plastic --> 
+bavaria,metal --> metal
+bavaria,can --> None
+bavaria,beer --> None
 bag,paper --> paper
-bag,narcos --> 
-bag,mcdonalds --> 
-bag,chips --> 
-antaflu,wrapper --> plastic
-antaflu,plastic --> 
-antaflu,candywrapper --> 
-antaflu,candy --> 
-amstel,metal --> 
-amstel,can --> 
-amstel,beer --> 
-aluminum,wrapper --> 
-aluminum,soda --> 
-aluminum,redbull --> 
-aluminum,plastic --> 
-aluminum,metal --> 
-aluminum,heineken --> 
-aluminum,foil --> 
+bag,narcos --> None
+bag,mcdonalds --> paper
+amstel,metal --> metal
+amstel,can --> None
+amstel,beer --> None
+aluminum,wrapper --> metal
+aluminum,soda --> metal
+aluminum,redbull --> metal
+aluminum,plastic --> None
+aluminum,metal --> metal
+aluminum,heineken --> metal
+aluminum,foil --> metal
 aluminum,energydrink --> metal
-aluminum,drink --> 
-aluminum,coke --> 
-aluminum,cocacola --> 
-aluminum,can --> 
-aluminum,beer --> 
-aluminium,wrapper --> 
+aluminum,drink --> metal
+aluminum,coke --> metal
+aluminum,cocacola --> metal
+aluminum,can --> metal
+aluminum,beer --> metal
+aluminium,wrapper --> metal
 aluminium,can --> metal
-alcohol,metal --> 
-alcohol,heineken --> 
-alcohol,glass --> 
-alcohol,drink --> 
+alcohol,metal --> None
+alcohol,heineken --> None
+alcohol,glass --> glass
+alcohol,drink --> None
 alcohol,can --> metal
-alcohol,bottle --> 
-alcohol,beer --> 
-alcohol,aluminum --> 
-albertheijn,plastic --> 
-albertheijn,can --> 
-aadrink,plastic --> 
-aadrink,energydrink --> 
-aadrink,bottle --> 
-5thingsclear,plastic --> 
-5thingsclear,cigarettebutt --> 
-wrapper,sweet --> trash
-wrapper,snickers --> trash
-wrapper,piece --> trash
-wrapper,icecream --> trash
-wrapper,food --> trash
-wrapper,cookie --> trash
-wrapper,candy --> trash
-wrapper,antaflu --> trash
-tobacco,cigarettebutt --> trash
-tissue,paper --> trash
+alcohol,bottle --> None
+alcohol,beer --> None
+alcohol,aluminum --> metal
+albertheijn,plastic --> None
+albertheijn,can --> None
+aadrink,plastic --> None
+aadrink,energydrink --> None
+aadrink,bottle --> None
+5thingsclear,plastic --> None
 tearoff,wrapper --> trash
 sweet,wrapper --> trash
-styrofoam,piece --> trash
 straw,wrapper --> trash
-straw,plastic --> trash
-strap,plastic --> trash
-stick,plastic --> trash
-spoon,plastic --> trash
 snickers,wrapper --> trash
-saucecup,mcdonalds --> trash
 sauce,saucecup --> trash
 polystyrene,styrofoam --> trash
-polystyrene,plastic --> trash
 plastic,tray --> trash
 plastic,toy --> trash
 plastic,tissue --> trash
@@ -330,23 +209,10 @@ plastic,rope --> trash
 plastic,polystyrene --> trash
 plastic,plasticwrapper --> trash
 plastic,plasticbag --> trash
-plastic,packaging --> trash
-plastic,miscellaneous --> trash
-plastic,lollipop --> trash
-plastic,lighter --> trash
-plastic,fork --> trash
-plastic,foil --> trash
-plastic,firework --> trash
-plastic,fastfood --> trash
-plastic,cottonbud --> trash
-plastic,container --> trash
-plastic,cigarettepack --> trash
 piece,wrapper --> trash
 piece,styrofoam --> trash
 piece,polystyrene --> trash
 paper,tissue --> trash
-paper,piece --> trash
-paper,napkin --> trash
 packet,plastic --> trash
 packaging,plastic --> trash
 narcos,plastic --> trash
@@ -367,107 +233,127 @@ marlboro,plastic --> trash
 lollipop,plastic --> trash
 lighter,plastic --> trash
 lid,mcdonalds --> trash
+icecream,wrapper --> trash
+icecream,plastic --> trash
+haribo,plastic --> trash
+glove,plastic --> trash
+fork,plastic --> trash
+food,wrapper --> trash
+food,plastic --> trash
+foil,plastic --> trash
+fireworks,plastic --> trash
+firework,plastic --> trash
+firework,paper --> trash
 firework,knetterbal --> trash
+fastfood,plastic --> trash
+fastfood,paper --> trash
+exposingtrash,plasticnevergoesaway --> trash
 exposingtrash,objetobasura --> trash
+drinkpouch,plastic --> trash
+cutlery,plastic --> trash
+cup,straw --> trash
+cup,paper --> trash
+cottonbud,stick --> trash
+cottonbud,plastic --> trash
+cookie,wrapper --> trash
+cookie,plastic --> trash
+container,plastic --> trash
+coffeecup,plastic --> trash
+coffeecup,paper --> trash
+coffee,plastic --> trash
+coffee,cup --> trash
+cleaningcloth,microfibre --> trash
 cigarettepack,plastic --> trash
+cigarettebutt,tobacco --> trash
+cigarettebutt,plastic --> trash
+cigarettebox,plastic --> trash
+cigarettebox,marlboro --> trash
+cigarette,smoking --> trash
+cigarette,plastic --> trash
+cigarette,marlboro --> trash
 cigarette,cigarettebutt --> trash
+chocolate,wrapper --> trash
+chips,plastic --> trash
+celluloseacetate,smoking --> trash
+celluloseacetate,cigarettebutt --> trash
+celluloseacetate,cigarette --> trash
+cardboard,plastic --> trash
+candywrapper,plastic --> trash
+candyman mac bubble,candyman mac bubble --> trash
 candy,wrapper --> trash
+camel,cigarette --> trash
 butt,smoking --> trash
+butt,plastic --> trash
 butt,cigarette --> trash
 butt,celluloseacetate --> trash
+beer,plastic --> trash
+balloon,rubber --> trash
+balloon,plastic --> trash
 bag,plastic --> trash
+bag,chips --> trash
 bag,candy --> trash
-ziplock --> 
-wrigleys --> 
-wilhelmina --> 
-waterbottle --> recyclable
-water --> recyclable
-viasantafe --> 
-unknown --> 
-twix --> 
-tray --> 
-toy --> 
-tissue --> recyclable
-tinfoil --> 
+antaflu,wrapper --> trash
+antaflu,plastic --> trash
+antaflu,candywrapper --> trash
+antaflu,candy --> trash
+5thingsclear,cigarettebutt --> trash
+wrigleys --> None
+wilhelmina --> None
+waterbottle --> plastic
+water --> None
+viasantafe --> None
+twix --> None
+tinfoil --> metal
 tin --> metal
-timhortons --> 
-ticket --> 
-tearoff --> 
-tape --> 
-strip --> 
-string --> 
+timhortons --> None
+ticket --> paper
+tape --> None
 strawwrapper --> plastic
-straw --> recyclable
-stirrer --> 
-sportlife --> 
+sportlife --> None
 spoon --> metal
 soda --> metal
-snack --> 
-shotgunshell --> 
-schultenbrau --> 
-rubberband --> 
-ravenclaw --> 
-plasticwrapper --> plastic
-plasticstraw --> 
+ravenclaw --> None
 plasticlid --> plastic
 plasticcup --> plastic
-plasticbottle --> recyclable
-plasticbag --> recyclable
-pepsi --> 
-pencil --> 
-papertowel --> 
+plasticbottle --> plastic
+pepsi --> None
+papertowel --> None
 papercup --> plastic
-pallmall --> 
-packet --> 
-package --> 
-oreo --> 
-oakclifflove --> 
-newspaper --> 
-nestle --> 
-monster --> 
+pallmall --> None
+oakclifflove --> None
+newspaper --> paper
+nestle --> None
+monster --> None
 metal --> metal
-mentos --> 
-mars --> 
-lipton --> 
-lays --> 
-kitkat --> 
-kinder --> 
-kfc --> 
-jupiler --> 
-juicebox --> 
-juice --> cardboard
-icetea --> 
-hlr1 --> 
+mars --> None
+lipton --> None
+lays --> None
+kinder --> None
+kfc --> None
+jupiler --> None
+juicebox --> paper
+juice --> None
+icetea --> None
+hlr1 --> None
 heineken --> metal
-hairtie --> 
-gumwrapper --> 
-grolsch --> 
+grolsch --> None
 glassbottle --> glass
-glass --> recyclable
-foodwrapper --> 
-fireworks --> 
-fernandes --> 
-fabric --> 
-export --> 
+glass --> glass
+fernandes --> None
+export --> None
 energydrink --> metal
-drugs --> 
 drinkcarton --> metal
 drink --> metal
-cutlery --> 
-cup --> recyclable
-construction --> 
 coke --> metal
 coffeecup --> plastic
 cocacola --> metal
-cigarettes --> 
 chs --> None
-cardboard --> cardboard
-candywrapper --> recyclable
+cardboard --> paper
 candyman mac bubble --> metal
 candy --> metal
 can --> metal
 burgerking --> None
-bottlecap --> metal
+bottlecap --> None
 bottle --> metal
 blik --> None
 beer --> metal
@@ -477,54 +363,87 @@ aluminium --> metal
 alcohol --> metal
 ahold --> None
 zwerfie --> trash
+ziplock --> trash
 zerolitter --> trash
 wrapper --> trash
 wood --> trash
 westernflorida --> trash
+unknown --> trash
+tray --> trash
+toy --> trash
 tobacco --> trash
+tissue --> trash
+tearoff --> trash
 sweet --> trash
 styrofoam --> trash
+strip --> trash
+string --> trash
+straw --> trash
+stirrer --> trash
 stick --> trash
 starbucks --> trash
+snack --> trash
 smoking --> trash
 slytherin --> trash
 slammers --> trash
+shotgunshell --> trash
+schultenbrau --> trash
 sauce --> trash
+rubberband --> trash
 rubber --> trash
 rope --> trash
 redbull --> trash
 receipt --> trash
 polystyrene --> trash
+plasticwrapper --> trash
+plasticstraw --> trash
+plasticbag --> trash
 plastic --> trash
 piece --> trash
 peuk --> trash
+pencil --> trash
 paper --> trash
+packet --> trash
 packaging --> trash
+package --> trash
 pack --> trash
+oreo --> trash
 objetobasura --> trash
 napkin --> trash
 mt2 --> trash
 miscellaneous --> trash
+mentos --> trash
 mcdonalds --> trash
 marlboro --> trash
 litter --> trash
 lighter --> trash
 lid --> trash
 knetterbal --> trash
+kitkat --> trash
 jumbo --> trash
 icecream --> trash
 hufflepuff --> trash
+hairtie --> trash
+gumwrapper --> trash
 gum --> trash
 gryffindor --> trash
 glove --> trash
+foodwrapper --> trash
 food --> trash
 foil --> trash
+fireworks --> trash
 firework --> trash
 fastfood --> trash
 fanta --> trash
+fabric --> trash
 exposingtrash --> trash
+drugs --> trash
+cutlery --> trash
+cup --> trash
 cookie --> trash
+construction --> trash
 confetti --> trash
+cigarettes --> trash
 cigarettepack --> trash
 cigarettebutt --> trash
 cigarettebox --> trash
@@ -534,6 +453,7 @@ chewinggum --> trash
 celluloseacetate --> trash
 caprisun --> trash
 cap --> trash
+candywrapper --> trash
 camel --> trash
 butt --> trash
 bread --> trash
