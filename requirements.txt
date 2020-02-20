@@ -1,0 +1,13 @@
+flask
+h5py
+matplotlib
+numpy
+pandas
+requests
+tqdm
+opencv-contrib-python==4.1.0.25
+gpiozero
+Phidgets
+picamera
+psutil
+smbus
