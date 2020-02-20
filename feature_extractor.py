@@ -14,7 +14,7 @@ class Lambda(nn.Module):
         return x
 
 class Resnet():
-    def __init__(self, model_name, device='cpu', weights=None):
+    def __init__(self, model_name, device='cuda', weights=None):
         self.model_name = model_name
         self.device = device
         self.resnet = getattr(models, model_name)(pretrained=True).eval().to(device)

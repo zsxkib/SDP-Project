@@ -1,3 +1,4 @@
+from importlib.machinery import SourceFileLoader
 from sklearn.naive_bayes import *
 from sklearn.linear_model import *
 from sklearn.ensemble import RandomForestClassifier
@@ -6,6 +7,16 @@ from scipy.stats import mode
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from matplotlib import pyplot as plt
+import lycon
+
+def softmax(xs):
+    xs = np.exp(xs)
+    s = np.sum(xs)
+    return np.array([x / s for x in xs])
+
 
 class BaseClassifier():
     def train(self, dataset, cache={}):
@@ -23,26 +34,39 @@ class BaseClassifier():
     def update(self, label):
         return 'not updated - method not implemented'
 
-    def test(self, dataset, update=False, cache={}):
+    def test(self, dataset, update=False, cache={}, dump_dir=None):
         print('test', self, 'on', dataset)
         N = len(self.labelset)
         confusion_matrix = pd.DataFrame(np.zeros(( N + 1, N + 1 )))
         confusion_matrix.columns = self.labelset + ['accuracy']
         confusion_matrix.index = self.labelset + ['recall']
-        n_correct = n_total = 0
+        n_correct = n_total = n_unknown = n_total_classified = 0
         for image, correct_label, filename in tqdm(dataset, desc='testing'):
+            n_total += 1
             # since our dataset only has images from one angle per item, use it twice and pretend it's from two angles
             # no need to preprocess since images are already in right shape from the testset (assume it has the same config as trainset)
-            predict_label = self.classify(dict(image_top=image, image_side=image), preprocess=False, cache_key=filename, cache=cache)
+            if not isinstance(image, dict):
+                # if testing on single image, duplicate the image to make it a dictionary
+                image = dict(image_top=image, image_side=image)
+            predict_label = self.classify(
+                image,
+                preprocess=False, cache_key=filename, cache=cache
+            )
+            if predict_label == 'unknown':
+                n_unknown += 1
+                continue
             if update:
                 self.update(correct_label)
             confusion_matrix.iloc[
                 self.labelset.index(predict_label),
                 self.labelset.index(correct_label),
             ] += 1
+            if correct_label != predict_label and dump_dir is not None:
+                plt.imsave(f"{dump_dir}/Predict-{predict_label}-Correct-{correct_label}-{filename}-0.png", image['image_top'])
+                plt.imsave(f"{dump_dir}/Predict-{predict_label}-Correct-{correct_label}-{filename}-1.png", image['image_side'])
             if correct_label == predict_label:
                 n_correct += 1
-            n_total += 1
+            n_total_classified += 1
         confusion_matrix.loc[self.labelset, 'accuracy'] = (
             confusion_matrix.values[range(N), range(N)]
           / confusion_matrix.values[:N, :N].sum(1)
@@ -51,11 +75,48 @@ class BaseClassifier():
             confusion_matrix.values[range(N), range(N)]
           / confusion_matrix.values[:N, :N].sum(0)
         )
-        accuracy = n_correct / n_total if n_total > 0 else 0
+        unknown_rate = n_unknown / n_total if n_total > 0 else 0
+        accuracy = n_correct / n_total_classified if n_total > 0 else 0
+        print('unknown rate', unknown_rate)
         print('accuracy', accuracy)
         print('confusion matrix')
         print(confusion_matrix)
         return accuracy, confusion_matrix
+
+
+class NeuralNetClassifier(BaseClassifier):
+    def __init__(self, model_dir, thres):
+        super().__init__()
+        self.model = keras.models.load_model(model_dir + 'model.h5')
+        self.preproc = SourceFileLoader('preproc', model_dir + 'preproc.py').load_module().preproc
+        labels_map = eval(open(model_dir + 'labels_map.txt').read())
+        self.index_to_label = {v: k for k, v in labels_map.items()}
+        self.labelset = list(labels_map.keys()) # for baseclassifier to use
+        self.t = thres
+
+    def __repr__(self):
+        return f'NNClassifier(t={self.t})'
+
+    def classify(self, data, **_):
+        image_top = self.preproc(data['image_top'])
+        image_side = self.preproc(data['image_side'])
+        scores = self.model.predict(np.stack([image_top, image_side])).mean(0)
+#hm
+#        scores_top = softmax(scores[0])
+#        scores_side = softmax(scores[1])
+#        scores = 2 / ( 1 / scores_top + 1 / scores_side )
+#max
+#        if scores_top.max() > scores_side.max():
+#            scores = scores_top
+#        else:
+#            scores = scores_side
+        scores = softmax(scores)
+        score = scores.max()
+        if score > self.t:
+            label = self.index_to_label[ scores.argmax() ]
+            return label
+        else:
+            return 'unknown'
 
 
 class FeatureExtractorClassifier(BaseClassifier):
