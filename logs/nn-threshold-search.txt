@@ -1,0 +1,161 @@
+test NNClassifier(t=0.3) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:17<00:00,  6.33it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.0
+accuracy 0.6756756756756757
+confusion matrix
+         glass  metal      paper    plastic      trash  accuracy
+glass      0.0    0.0   0.000000   0.000000   0.000000       NaN
+metal      0.0    0.0   1.000000   3.000000   6.000000  0.000000
+paper      0.0    0.0  15.000000   1.000000   0.000000  0.937500
+plastic    0.0    1.0   0.000000  14.000000   4.000000  0.736842
+trash      0.0    1.0  11.000000   8.000000  46.000000  0.696970
+recall     NaN    0.0   0.555556   0.538462   0.821429  0.000000
+test NNClassifier(t=0.3333333333333333) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:16<00:00,  6.61it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.009009009009009009
+accuracy 0.6818181818181818
+confusion matrix
+         glass  metal      paper    plastic      trash  accuracy
+glass      0.0    0.0   0.000000   0.000000   0.000000       NaN
+metal      0.0    0.0   1.000000   3.000000   5.000000  0.000000
+paper      0.0    0.0  15.000000   1.000000   0.000000  0.937500
+plastic    0.0    1.0   0.000000  14.000000   4.000000  0.736842
+trash      0.0    1.0  11.000000   8.000000  46.000000  0.696970
+recall     NaN    0.0   0.555556   0.538462   0.836364  0.000000
+test NNClassifier(t=0.36666666666666664) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:16<00:00,  6.62it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.018018018018018018
+accuracy 0.6880733944954128
+confusion matrix
+         glass  metal      paper    plastic      trash  accuracy
+glass      0.0    0.0   0.000000   0.000000   0.000000       NaN
+metal      0.0    0.0   1.000000   3.000000   5.000000  0.000000
+paper      0.0    0.0  15.000000   1.000000   0.000000  0.937500
+plastic    0.0    1.0   0.000000  14.000000   4.000000  0.736842
+trash      0.0    1.0  10.000000   8.000000  46.000000  0.707692
+recall     NaN    0.0   0.576923   0.538462   0.836364  0.000000
+test NNClassifier(t=0.4) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:16<00:00,  6.68it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.04504504504504504
+accuracy 0.6981132075471698
+confusion matrix
+         glass  metal      paper    plastic      trash  accuracy
+glass      0.0    0.0   0.000000   0.000000   0.000000       NaN
+metal      0.0    0.0   1.000000   3.000000   5.000000  0.000000
+paper      0.0    0.0  15.000000   1.000000   0.000000  0.937500
+plastic    0.0    0.0   0.000000  13.000000   4.000000  0.764706
+trash      0.0    1.0  10.000000   7.000000  46.000000  0.718750
+recall     NaN    0.0   0.576923   0.541667   0.836364  0.000000
+test NNClassifier(t=0.43333333333333335) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:16<00:00,  6.79it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.07207207207207207
+accuracy 0.7184466019417476
+confusion matrix
+         glass  metal      paper    plastic      trash  accuracy
+glass      0.0    0.0   0.000000   0.000000   0.000000       NaN
+metal      0.0    0.0   1.000000   3.000000   4.000000  0.000000
+paper      0.0    0.0  15.000000   1.000000   0.000000  0.937500
+plastic    0.0    0.0   0.000000  13.000000   4.000000  0.764706
+trash      0.0    1.0  10.000000   5.000000  46.000000  0.741935
+recall     NaN    0.0   0.576923   0.590909   0.851852  0.000000
+test NNClassifier(t=0.4666666666666667) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:15<00:00,  6.99it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.11711711711711711
+accuracy 0.7244897959183674
+confusion matrix
+         glass  metal  paper    plastic      trash  accuracy
+glass      0.0    0.0    0.0   0.000000   0.000000       NaN
+metal      0.0    0.0    1.0   2.000000   4.000000  0.000000
+paper      0.0    0.0   15.0   1.000000   0.000000  0.937500
+plastic    0.0    0.0    0.0  13.000000   4.000000  0.764706
+trash      0.0    1.0    9.0   5.000000  43.000000  0.741379
+recall     NaN    0.0    0.6   0.619048   0.843137  0.000000
+test NNClassifier(t=0.5) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:15<00:00,  7.10it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.1891891891891892
+accuracy 0.7222222222222222
+confusion matrix
+         glass  metal  paper  plastic      trash  accuracy
+glass      0.0    0.0    0.0      0.0   0.000000       NaN
+metal      0.0    0.0    1.0      2.0   4.000000  0.000000
+paper      0.0    0.0   12.0      1.0   0.000000  0.923077
+plastic    0.0    0.0    0.0     12.0   4.000000  0.750000
+trash      0.0    1.0    7.0      5.0  41.000000  0.759259
+recall     NaN    0.0    0.6      0.6   0.836735  0.000000
+test NNClassifier(t=0.5333333333333333) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:14<00:00,  7.59it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.2972972972972973
+accuracy 0.717948717948718
+confusion matrix
+         glass  metal   paper    plastic      trash  accuracy
+glass      0.0    0.0   0.000   0.000000   0.000000       NaN
+metal      0.0    0.0   1.000   2.000000   3.000000  0.000000
+paper      0.0    0.0  10.000   1.000000   0.000000  0.909091
+plastic    0.0    0.0   0.000  11.000000   4.000000  0.733333
+trash      0.0    1.0   5.000   5.000000  35.000000  0.760870
+recall     NaN    0.0   0.625   0.578947   0.833333  0.000000
+test NNClassifier(t=0.5666666666666667) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:14<00:00,  7.88it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.40540540540540543
+accuracy 0.696969696969697
+confusion matrix
+         glass  metal     paper    plastic  trash  accuracy
+glass      0.0    0.0  0.000000   0.000000    0.0       NaN
+metal      0.0    0.0  1.000000   1.000000    3.0  0.000000
+paper      0.0    0.0  7.000000   0.000000    0.0  1.000000
+plastic    0.0    0.0  0.000000  11.000000    4.0  0.733333
+trash      0.0    1.0  5.000000   5.000000   28.0  0.717949
+recall     NaN    0.0  0.538462   0.647059    0.8  0.000000
+test NNClassifier(t=0.6) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████| 111/111 [00:13<00:00,  8.05it/s]
+/home/zhixing/SDP-Project/classifier.py:72: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(1)
+/home/zhixing/SDP-Project/classifier.py:76: RuntimeWarning: invalid value encountered in true_divide
+  / confusion_matrix.values[:N, :N].sum(0)
+unknown rate 0.4954954954954955
+accuracy 0.6607142857142857
+confusion matrix
+         glass  metal     paper   plastic      trash  accuracy
+glass      0.0    0.0  0.000000  0.000000   0.000000       NaN
+metal      0.0    0.0  1.000000  1.000000   3.000000  0.000000
+paper      0.0    0.0  5.000000  0.000000   0.000000  1.000000
+plastic    0.0    0.0  0.000000  9.000000   4.000000  0.692308
+trash      0.0    1.0  5.000000  4.000000  23.000000  0.696970
+recall     NaN    0.0  0.454545  0.642857   0.766667  0.000000
+

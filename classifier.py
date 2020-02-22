@@ -101,6 +101,7 @@ class NeuralNetClassifier(BaseClassifier):
         image_top = self.preproc(data['image_top'])
         image_side = self.preproc(data['image_side'])
         scores = self.model.predict(np.stack([image_top, image_side])).mean(0)
+        #print(scores, self.index_to_label)
 #hm
 #        scores_top = softmax(scores[0])
 #        scores_side = softmax(scores[1])
