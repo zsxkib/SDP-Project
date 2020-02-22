@@ -40,7 +40,7 @@ class BaseClassifier():
         confusion_matrix = pd.DataFrame(np.zeros(( N + 1, N + 1 )))
         confusion_matrix.columns = self.labelset + ['accuracy']
         confusion_matrix.index = self.labelset + ['recall']
-        n_correct = n_total = n_unknown = n_total_classified = 0
+        n_correct = n_total = n_unknown = n_total_classified = n_correct_bin = 0
         for image, correct_label, filename in tqdm(dataset, desc='testing'):
             n_total += 1
             # since our dataset only has images from one angle per item, use it twice and pretend it's from two angles
@@ -62,10 +62,13 @@ class BaseClassifier():
                 self.labelset.index(correct_label),
             ] += 1
             if correct_label != predict_label and dump_dir is not None:
-                plt.imsave(f"{dump_dir}/Predict-{predict_label}-Correct-{correct_label}-{filename}-0.png", image['image_top'])
-                plt.imsave(f"{dump_dir}/Predict-{predict_label}-Correct-{correct_label}-{filename}-1.png", image['image_side'])
+                plt.imsave(f"{dump_dir}/Predict-{predict_label}-Correct-{correct_label}-{filename}.png", image['image_top'])
+                #plt.imsave(f"{dump_dir}/Predict-{predict_label}-Correct-{correct_label}-{filename}-1.png", image['image_side'])
             if correct_label == predict_label:
                 n_correct += 1
+                n_correct_bin += 1
+            elif correct_label != 'trash' and predict_label != 'trash':
+                n_correct_bin += 1
             n_total_classified += 1
         confusion_matrix.loc[self.labelset, 'accuracy'] = (
             confusion_matrix.values[range(N), range(N)]
@@ -76,9 +79,11 @@ class BaseClassifier():
           / confusion_matrix.values[:N, :N].sum(0)
         )
         unknown_rate = n_unknown / n_total if n_total > 0 else 0
-        accuracy = n_correct / n_total_classified if n_total > 0 else 0
+        accuracy = n_correct / n_total_classified if n_total_classified > 0 else 0
+        bin_accuracy = n_correct_bin / n_total_classified if n_total_classified > 0 else 0
         print('unknown rate', unknown_rate)
         print('accuracy', accuracy)
+        print('binary accuracy', bin_accuracy)
         print('confusion matrix')
         print(confusion_matrix)
         return accuracy, confusion_matrix

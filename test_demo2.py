@@ -16,9 +16,11 @@ if sys.argv[1] == 'nn2':
         cfer.test(custom_ds, dump_dir='demo2-dataset/custom-test-dump2')
 elif sys.argv[1] == 'nn1':
     print('neural net trained on litterati')
-    for t in np.linspace(0.3, 0.6, 10):
+    if True:
+        t = 0.4
+#    for t in np.linspace(0.3, 0.6, 10):
         custom_ds = DirDataset('demo2-dataset/custom-test', 512, 512, proc=False)
-        cfer = NeuralNetClassifier('../litterati/model3/', thres=t)
+        cfer = NeuralNetClassifier('../litterati/model/', thres=t)
         cfer.test(custom_ds, dump_dir='demo2-dataset/custom-test-dump1')
 elif sys.argv[1] == 'knn':
     print('knn trained on trashnet')
