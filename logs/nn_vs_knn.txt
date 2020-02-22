@@ -1,25 +1,31 @@
-test <classifier.NeuralNetClassifier object at 0x7f1c7b3b0e90> on DirDataset(demo2-dataset/custom-test, 512, 512)
+test NNClassifier(t=0.4) on DirDataset(demo2-dataset/custom-test, 512, 512)
 testing: 100%|████████████████████████████████████████████████████████████████████████| 111/111 [00:12<00:00,  8.93it/s]
-accuracy 0.6216216216216216
-binary classification accuracy 0.891
+unknown rate 0.036036036036036036
+accuracy 0.7102803738317757
+binary accuracy 0.7289719626168224
 confusion matrix
-         glass  metal      paper  plastic      trash  accuracy
-glass      0.0    0.0   0.000000      0.0   0.000000       NaN
-metal      0.0    0.0   1.000000      3.0   6.000000  0.000000
-paper      0.0    0.0  15.000000      1.0   0.000000  0.937500
-plastic    0.0    1.0   0.000000     12.0   6.000000  0.631579
-trash      0.0    5.0  11.000000      8.0  42.000000  0.636364
-recall     NaN    0.0   0.555556      0.5   0.777778  0.000000
+         glass  metal  paper  plastic      trash  accuracy
+glass      0.0    0.0    0.0     1.00   0.000000  0.000000
+metal      0.0    2.0    0.0     0.00   1.000000  0.666667
+paper      0.0    0.0   20.0     1.00  10.000000  0.645161
+plastic    0.0    0.0    0.0    12.00   2.000000  0.857143
+trash      0.0    0.0    5.0    11.00  42.000000  0.724138
+recall     NaN    1.0    0.8     0.48   0.763636  0.000000
+
 
 knn
+test KNNClassifier(Resnet(resnet50, weights=None), threshold=0.8, k=1) on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████████████████████████████████████████████| 111/111 [00:04<00:00, 25.97it/s]
+unknown rate 0.0
 accuracy 0.42342342342342343
-binary classification accuracy 0.623
+binary accuracy 0.5495495495495496
 confusion matrix
-            metal      paper    plastic      trash  accuracy
-metal    1.000000   0.000000   3.000000   7.000000  0.090909
-paper    3.000000  26.000000   9.000000  27.000000  0.400000
-plastic  1.000000   0.000000  10.000000  10.000000  0.476190
-trash    1.000000   1.000000   2.000000  10.000000  0.714286
-recall   0.166667   0.962963   0.416667   0.185185  0.000000
+         metal      paper    plastic      trash  accuracy
+metal      0.0   0.000000   4.000000   7.000000  0.000000
+paper      1.0  26.000000   9.000000  29.000000  0.400000
+plastic    0.0   0.000000  11.000000  10.000000  0.523810
+trash      1.0   1.000000   2.000000  10.000000  0.714286
+recall     0.0   0.962963   0.423077   0.178571  0.000000
+
 
 
