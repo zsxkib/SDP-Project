@@ -1,0 +1,25 @@
+test <classifier.NeuralNetClassifier object at 0x7f1c7b3b0e90> on DirDataset(demo2-dataset/custom-test, 512, 512)
+testing: 100%|████████████████████████████████████████████████████████████████████████| 111/111 [00:12<00:00,  8.93it/s]
+accuracy 0.6216216216216216
+binary classification accuracy 0.891
+confusion matrix
+         glass  metal      paper  plastic      trash  accuracy
+glass      0.0    0.0   0.000000      0.0   0.000000       NaN
+metal      0.0    0.0   1.000000      3.0   6.000000  0.000000
+paper      0.0    0.0  15.000000      1.0   0.000000  0.937500
+plastic    0.0    1.0   0.000000     12.0   6.000000  0.631579
+trash      0.0    5.0  11.000000      8.0  42.000000  0.636364
+recall     NaN    0.0   0.555556      0.5   0.777778  0.000000
+
+knn
+accuracy 0.42342342342342343
+binary classification accuracy 0.623
+confusion matrix
+            metal      paper    plastic      trash  accuracy
+metal    1.000000   0.000000   3.000000   7.000000  0.090909
+paper    3.000000  26.000000   9.000000  27.000000  0.400000
+plastic  1.000000   0.000000  10.000000  10.000000  0.476190
+trash    1.000000   1.000000   2.000000  10.000000  0.714286
+recall   0.166667   0.962963   0.416667   0.185185  0.000000
+
+
