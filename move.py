@@ -1,64 +1,39 @@
+import json
 from motors import Motors
 from time import time, sleep
-
-#################### varirables need to be declared ###########
-f1 = 2
-f2 = 3
-r1 = 4
-r2 = 5
-h1 = 1
-h2 = 0
-###################### global variables #######################
+############### GLOBAL VARIABLES ############
+with open('ports.json', 'r') as f:
+    ports = json.load(f)
+f1 = ports["motors"]["f1"]
+f2 = ports["motors"]["f2"]
+r1 = ports["motors"]["r1"]
+r2 = ports["motors"]["r2"]
+h1 = ports["motors"]["h1"]
+h2 = ports["motors"]["h2"]
 mc = Motors()
-###############################################################
+###############################################
 
-#time in second
-def move_front(timer):
+def move_front():
+    mc.move_motor(f1, 100)
+    mc.move_motor(f2, 100)
+    mc.move_motor(r1, -100)
+    mc.move_motor(r2, -100)
 
-    #mc.move_motor(motor_id, speed)
-    mc.move_motor(f1,-100)
-    mc.move_motor(f2,-100)
-    mc.move_motor(r1,100)
-    mc.move_motor(r2,100)
-
-    sleep(timer)
-    mc.stop_motors()
-
-#time in second
-def move_back(timer):
-
-    #mc.move_motor(motor_id, speed)
-    mc.move_motor(f1,100)
-    mc.move_motor(f2,100)
-    mc.move_motor(r1,-100)
-    mc.move_motor(r2,-100)
-
-    sleep(timer)
-    mc.stop_motors()
+def move_back():
+    mc.move_motor(r1, 100)
+    mc.move_motor(r2, 100)
+    mc.move_motor(f1, -100)
+    mc.move_motor(f2, -100)
 
 def stop_motors():
     mc.stop_motors()
 
 def hatch():
-    #open hatch
-    mc.move_motor(h1,-80)
+    mc.move_motor(h1, 80)
+    mc.move_motor(h2, 80)
     sleep(1.2)
     mc.stop_motors()
-    sleep(1)
-    #close hatch
-    mc.move_motor(h1,80)
+    mc.move_motor(h1, -80)
+    mc.move_motor(h2, -80)
     sleep(1.2)
     mc.stop_motors()
-
-
-def bin0():
-    hatch()
-    stop_motors()
-
-def bin1():
-    move_front(4)
-    stop_motors()
-    hatch()
-    stop_motors()
-    move_back(4)
-    stop_motors()

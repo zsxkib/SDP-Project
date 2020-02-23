@@ -1,0 +1,25 @@
+{
+  "motors": {
+    "f1": 1,
+    "f2": 2,
+    "r1": 3,
+    "r2": 4,
+    "h1": 5,
+    "h2": 0
+  },
+  "sensors": {
+    "I2C": {
+
+    },
+    "digital": {
+      "ultrasonic_horizontal": 2,
+      "ultrasonic_vertical": 3,
+      "buzzer": 4,
+      "magnetic1": 0,
+      "magnetic2": 0
+    },
+    "analog": {
+
+    }
+  }
+}

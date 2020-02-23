@@ -1,0 +1,18 @@
+{
+    "non-recyclable":{
+        "start_pos":20,
+        "end_pos": 80,
+        "pos": 50
+    },
+    "metal":{
+        "start_pos":20,
+        "end_pos": 80,
+        "pos": 50
+    },
+    "plastic":{
+        "start_pos":20,
+        "end_pos": 80,
+        "pos": 50
+    }
+
+}
