@@ -24,11 +24,11 @@ def when_lid_closed():
         sleep(0.1)
     return True
 
-def output_screen (text, color = "white"): ###########didnt mention port number
-    pallete = {"white":(255,255,255), "red":(255,0,0), "green":(0,255,0), "blue":(0,0,255), "black":(0,0,0)}
-    port = ports["sensors"]["I2C"]["lcd"]
-    lcd.setRGB(pallete[color])
-    lcd.setText(text)
+# def output_screen (text, color = "white"): ###########didnt mention port number
+#     pallete = {"white":(255,255,255), "red":(255,0,0), "green":(0,255,0), "blue":(0,0,255), "black":(0,0,0)}
+#     port = ports["sensors"]["I2C"]["lcd"]
+#     lcd.setRGB(pallete[color])
+#     lcd.setText(text)
 
 def input_with_timeout(timeout):
     ready, _, _ = select.select([sys.stdin], [], [], timeout)

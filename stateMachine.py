@@ -1,7 +1,10 @@
 from electroMagnet import *
 from gpio import *
 from camera import Camera
+from sense import *
 from web_client import WebClient
+import grove_rgb_lcd as lcd
+
 from matplotlib import pyplot as plt
 from threading import Thread
 import move
@@ -47,11 +50,18 @@ class Recycltron:
         if gpio_read(self.triggerPin) == 1: return True
         else: return False
 
+    def output_screen(self, text, color = "white"): ###########didnt mention port number
+        pallete = {"white":(255,255,255), "red":(255,0,0), "green":(0,255,0), "blue":(0,0,255), "black":(0,0,0)}
+        port = ports["sensors"]["I2C"]["lcd"]
+        lcd.setRGB(pallete[color])
+        lcd.setText(text)
+
     def run(self):
         # the main loop:
         while True:
             print(f'State update: {self.state}')
             if self.state == 'idle':
+                self.output_screen('The machine is idle.')
                 stopMagnet()
                 # turn off the lights
                 while not self.isLidOpen():
@@ -60,11 +70,13 @@ class Recycltron:
                 self.state = 'lidUp'
                 
             elif self.state == 'lidUp':
+                self.output_screen('The lid is openned')
                 while self.isLidOpen():
                     pass
                 self.state = 'lidDown'
 
             elif self.state == 'lidDown':
+                self.output_screen('The lid is closed and locked')
                 # lit up the lights
 
                 # lock the lid
@@ -73,6 +85,7 @@ class Recycltron:
                 self.state = 'processing'
                 
             elif self.state == 'processing':
+                self.output_screen('Processing item')
                 # image_top = camera_top.capture()
                 image_top = image_side = self.camera_side.capture()
                 plt.imsave('top.png', image_top)
@@ -83,15 +96,20 @@ class Recycltron:
                 pred_label = self.client.classify(image_top=image_top, image_side=image_side)
                 
                 if pred_label == 'metal':
-                    pass
+                    self.output_screen('Metal recyclable')
+                    move_to_bin(pred_label)
                 elif pred_label == 'cardboard':
-                    pass
+                    self.output_screen('Cardboard recyclable')
+                    move_to_bin(pred_label)
                 elif pred_label == 'recyclable':
-                    pass
+                    self.output_screen('Other recyclable')
+                    move_to_bin(pred_label)
                 elif pred_label == 'non-recyclable':
-                    pass
+                    self.output_screen('Non-recyclable')
+                    move_to_bin(pred_label)
                 else:
-                    pass
+                    self.output_screen('Error, dump into trash')
+                    move_to_bin('non-recyclable')
 
                 # finished trash sorting
                 self.state = 'idle'
@@ -101,6 +119,7 @@ class Recycltron:
             # elif self.state == 'returning':
             #     pass
             elif self.state == 'shutDown':
+                self.output_screen('Error, dump into trash')
                 break
         
         

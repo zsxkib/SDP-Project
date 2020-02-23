@@ -9,7 +9,12 @@
         "end_pos": 80,
         "pos": 50
     },
-    "plastic":{
+    "cardboard":{
+        "start_pos":20,
+        "end_pos": 80,
+        "pos": 50
+    },
+    "recyclable":{
         "start_pos":20,
         "end_pos": 80,
         "pos": 50
