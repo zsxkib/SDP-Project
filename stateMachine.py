@@ -52,8 +52,8 @@ class Recycltron:
 
     def output_screen(self, text, color = "white"): ###########didnt mention port number
         pallete = {"white":(255,255,255), "red":(255,0,0), "green":(0,255,0), "blue":(0,0,255), "black":(0,0,0)}
-        port = ports["sensors"]["I2C"]["lcd"]
-        lcd.setRGB(pallete[color])
+        # port = ports["sensors"]["I2C"]["lcd"]
+        lcd.setRGB(pallete[color][0], pallete[color][1], pallete[color][2])
         lcd.setText(text)
 
     def run(self):

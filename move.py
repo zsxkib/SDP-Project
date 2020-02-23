@@ -14,26 +14,27 @@ mc = Motors()
 ###############################################
 
 def move_front():
+    mc.move_motor(f1, -100)
+    mc.move_motor(f2, -100)
+    mc.move_motor(r1, 100)
+    mc.move_motor(r2, 100)
+
+def move_back():
     mc.move_motor(f1, 100)
     mc.move_motor(f2, 100)
     mc.move_motor(r1, -100)
     mc.move_motor(r2, -100)
 
-def move_back():
-    mc.move_motor(r1, 100)
-    mc.move_motor(r2, 100)
-    mc.move_motor(f1, -100)
-    mc.move_motor(f2, -100)
-
 def stop_motors():
     mc.stop_motors()
 
 def hatch():
-    mc.move_motor(h1, 80)
-    mc.move_motor(h2, 80)
+    mc.move_motor(h1, -100)
+    mc.move_motor(h2, -100)
     sleep(1.2)
     mc.stop_motors()
-    mc.move_motor(h1, -80)
-    mc.move_motor(h2, -80)
+    sleep(1)
+    mc.move_motor(h1, 100)
+    mc.move_motor(h2, 100)
     sleep(1.2)
     mc.stop_motors()
