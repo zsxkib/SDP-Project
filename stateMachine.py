@@ -22,7 +22,7 @@ class Recycltron:
     }
     
     def __init__(self, startingState = 'idle', triggerPin = 25):
-        self.currentState = startingState
+        self.state = startingState
 
         # set up the magnetic trigger
         self.triggerPin = triggerPin
@@ -97,19 +97,19 @@ class Recycltron:
                 
                 if pred_label == 'metal':
                     self.output_screen('Metal recyclable')
-                    move_to_bin(pred_label)
+#                    move_to_bin(pred_label)
                 elif pred_label == 'cardboard':
                     self.output_screen('Cardboard recyclable')
-                    move_to_bin(pred_label)
+#                    move_to_bin(pred_label)
                 elif pred_label == 'recyclable':
                     self.output_screen('Other recyclable')
-                    move_to_bin(pred_label)
+#                    move_to_bin(pred_label)
                 elif pred_label == 'non-recyclable':
                     self.output_screen('Non-recyclable')
-                    move_to_bin(pred_label)
+#                    move_to_bin(pred_label)
                 else:
                     self.output_screen('Error, dump into trash')
-                    move_to_bin('non-recyclable')
+#                    move_to_bin('non-recyclable')
 
                 # finished trash sorting
                 self.state = 'idle'
