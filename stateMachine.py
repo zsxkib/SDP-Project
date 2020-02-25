@@ -3,6 +3,7 @@ from gpio import *
 from camera import Camera
 from sense import *
 from web_client import WebClient
+from grovepi import *
 import grove_rgb_lcd as lcd
 
 import select
@@ -48,7 +49,7 @@ class Recycltron:
         stopMagnet() # release the locks
 
         # initialise the i2c lcd screen
-        self.led = pinMode(ports['digital']['led'],"OUTPUT")
+        self.ledRed = pinMode(ports['sensors']['digital']['ledRed'],"OUTPUT")
         self.lastText = None
 
 
@@ -93,6 +94,19 @@ class Recycltron:
             dist = grovepi.ultrasonicRead(port)
             print("dist",dist)
         move.stop_motors()
+
+
+        if self.is_bin_full():
+            if category == 'non-recyclable':
+                # ask user to clear up the bin, stop here
+                self.output_screen('The bins are full!!!')
+                digitalWrite(self.ledRed,1) 
+            else:
+                self.move_to_bin('non-recyclable')
+        else:
+            self.operate_hatch()
+            digitalWrite(self.ledRed,1) 
+            
 
 
     def is_bin_full(self):
@@ -157,19 +171,19 @@ class Recycltron:
                 print(f'the predicted label is {pred_label}')
                 if pred_label == 'metal':
                     self.output_screen('Metal recyclable')
-#                    move_to_bin(pred_label)
                 elif pred_label == 'cardboard':
                     self.output_screen('Cardboard recyclable')
-#                    move_to_bin(pred_label)
                 elif pred_label == 'recyclable':
                     self.output_screen('Other recyclable')
-#                    move_to_bin(pred_label)
                 elif pred_label == 'non-recyclable':
                     self.output_screen('Non-recyclable')
-#                    move_to_bin(pred_label)
                 else:
                     self.output_screen('Error, dump into trash')
-#                    move_to_bin('non-recyclable')
+                    pred_label = 'non-recyclable'
+
+                self.move_to_bin(pred_label)
+
+
 
                 # finished trash sorting
                 self.state = 'idle'
