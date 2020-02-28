@@ -8,12 +8,22 @@ import grove_rgb_lcd as lcd
 
 import select
 import sys
-import move
+import move_over_web as move
 
 from matplotlib import pyplot as plt
 from threading import Thread
-import move
 import time
+
+avg_window = []
+usread_window_size = 5
+usread_port = 3
+def usread():
+    print('usread avg', avg_window)
+    if len(avg_window) > 0:
+        avg_window.pop(0)
+    while len(avg_window) < usread_window_size:
+        avg_window.append( grovepi.ultrasonicRead(usread_port) )
+    return sum(avg_window) / usread_window_size
 
 class Recycltron:
     States = {
@@ -62,7 +72,7 @@ class Recycltron:
                 counter += 1
             else:
                 counter -= 1
-        print('islidopen', counter, res)
+        #print('islidopen', counter, res)
         if counter < 0: return True
         else: return False
 
@@ -82,16 +92,16 @@ class Recycltron:
 
     def move_to_bin(self, category):
         port = ports["sensors"]["digital"]["ultrasonic_horizontal"]
-        dist = grovepi.ultrasonicRead(port)
+        dist = usread() #grovepi.ultrasonicRead(port)
         bin = bins[category]
-        print("dist",dist)
+        print("dist",dist, bin)
         if (dist<bin["start_pos"]):
             move.move_front()
         if (dist>bin["end_pos"]):
             move.move_back()
         while (dist>bin["end_pos"] or dist<bin["start_pos"]):
             sleep(0.1)
-            dist = grovepi.ultrasonicRead(port)
+            dist = usread() #grovepi.ultrasonicRead(port)
             print("dist",dist)
         move.stop_motors()
 
@@ -110,14 +120,18 @@ class Recycltron:
 
 
     def is_bin_full(self):
+        return False
         port = ports["sensors"]["digital"]["ultrasonic_vertical"]
         dist = grovepi.ultrasonicRead(port)
         print(dist)
         if (dist>50): #bin is empty
+            print('bin empty')
             return 0
         elif (dist>25):
+            print('bin half')
             return 0.5
         else:
+            print('bin full')
             return 1
 
     def operate_hatch(self):
@@ -169,6 +183,13 @@ class Recycltron:
                 # TODO: fix here
                 pred_label = self.client.classify(image_top=image_top, image_side=image_side)
                 print(f'the predicted label is {pred_label}')
+                if pred_label == 'metal':
+                    pred_label = 'metal'
+                elif pred_label != 'trash':
+                    pred_label = 'recyclable'
+                else:
+                    pred_label = 'non-recyclable'
+
                 if pred_label == 'metal':
                     self.output_screen('Metal recyclable')
                 elif pred_label == 'cardboard':

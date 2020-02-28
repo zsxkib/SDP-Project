@@ -8,11 +8,11 @@
 
     },
     "digital": {
-      "ultrasonic_horizontal": 2,
+      "ultrasonic_horizontal": 3,
       "ultrasonic_vertical": 3,
       "buzzer": 1,
-      "magnetic1": 0,
-      "magnetic2": 0,
+      "magnetic1": 5,
+      "magnetic2": 5,
       "ledRed": 4
     },
     "analog": {

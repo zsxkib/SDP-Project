@@ -1,13 +1,13 @@
 {
     "non-recyclable":{
-        "start_pos":20,
-        "end_pos": 80,
-        "pos": 50
+        "start_pos":0,
+        "end_pos": 5,
+        "pos": 4
     },
     "metal":{
         "start_pos":20,
-        "end_pos": 80,
-        "pos": 50
+        "end_pos": 22,
+        "pos": 20
     },
     "cardboard":{
         "start_pos":20,
@@ -15,9 +15,9 @@
         "pos": 50
     },
     "recyclable":{
-        "start_pos":20,
-        "end_pos": 80,
-        "pos": 50
+        "start_pos":31,
+        "end_pos": 33,
+        "pos": 32
     }
 
 }
