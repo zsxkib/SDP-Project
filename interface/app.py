@@ -8,6 +8,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/123', methods=['GET'])
+def page2():
+    return render_template('base.html')
+
 
 
 if __name__ == "__main__":
