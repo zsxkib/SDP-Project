@@ -8,9 +8,17 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/123', methods=['GET'])
-def page2():
-    return render_template('base.html')
+@app.route('/getUserInput', methods=['POST', 'GET'])
+def page_input():
+    return render_template('touchscreen_select_category.html')
+
+@app.route('/idle', methods=['GET'])
+def page_idle():
+    return render_template('touchscreen_idle.html')
+
+@app.route('/processing', methods=['GET'])
+def page_processing():
+    return render_template('touchscreen_processing.html')
 
 
 

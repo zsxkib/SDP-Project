@@ -42,6 +42,74 @@ html, body {
     padding: 1rem;
 }
 
+.row-clear-margin {
+  width: 100%;
+  margin: 0 !important;
+}
+
+
+.box div {
+  width: 33.3%;
+  height: 100px;
+}      
+
+.touchscreen {
+  width: 320px;
+  height: 240px;
+  border: solid 1px grey;
+}
+
+.touchscreen-titlebar {
+  display: block;
+  width: 100%;
+  height: 26px;
+  /* background-color: khaki; */
+}
+.touchscreen-titlebar div {
+  display: block;
+  /* background-color: lightblue; */
+  width: max-content;
+  margin: 0 auto;
+  font-size: 21px;
+}
+.touchscreen-body {
+  width: 100%;
+  height: 210px;
+}
+
+.touchscreen-select-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:50%;
+  width:100%;
+}
+
+.touchscreen-select-row button {
+  font-size: 22px;
+  margin: 5px 0 0 5px;
+}
+
+.touchscreen-select-row button:nth-last-child(1) {
+  margin: 5px 5px 5px 5px;
+}
+
+.touchscreen-row-3 button {
+  width: 33.3%;
+  height: 100px;
+}
+.touchscreen-row-1 button {
+  width: 100%;
+  height: 100px;
+}
+
+.touchscreen .btn-1 {
+  display: initial;
+}
+
+.colored-background {
+  background-color: lightgrey;
+}
 
 
 
