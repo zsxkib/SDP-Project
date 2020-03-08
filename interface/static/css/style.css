@@ -25,7 +25,8 @@ html, body {
 
 .welcome {
   width: 90%;
-  margin: 0 auto;
+  margin-left: auto !important;
+  margin-right: auto !important; 
   padding-top: 2rem;
 }
 
