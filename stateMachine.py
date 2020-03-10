@@ -2,7 +2,7 @@ from electroMagnet import *
 from gpio import *
 from camera import Camera
 from sense import *
-from web_client import WebClient
+from web_client import WebClient # ML server
 from grovepi import *
 import grove_rgb_lcd as lcd
 
@@ -13,6 +13,10 @@ import move_over_web as move
 from matplotlib import pyplot as plt
 from threading import Thread
 import time
+
+import sys
+sys.path.insert(1, './interface') # path to the interface
+import interfaceWebApp
 
 avg_window = []
 usread_window_size = 5
@@ -53,7 +57,7 @@ class Recycltron:
         self.camera_side = Camera('1.2')
 
         # connecting to the classifier server
-        self.client = WebClient('http://192.168.192.200:5000')
+        self.MLServer = WebClient('http://192.168.192.200:5000')
         
         # initialise the electro magnet locks
         stopMagnet() # release the locks
@@ -181,7 +185,7 @@ class Recycltron:
                 plt.imsave('side.png', image_side)
 
                 # TODO: fix here
-                pred_label = self.client.classify(image_top=image_top, image_side=image_side)
+                pred_label = self.MLServer.classify(image_top=image_top, image_side=image_side)
                 print(f'the predicted label is {pred_label}')
                 if pred_label == 'metal':
                     pred_label = 'metal'
@@ -191,17 +195,18 @@ class Recycltron:
                     pred_label = 'non-recyclable'
 
                 if pred_label == 'metal':
-                    self.output_screen('Metal recyclable')
+                    lcd_content = 'Metal recyclable'
                 elif pred_label == 'cardboard':
-                    self.output_screen('Cardboard recyclable')
+                    lcd_content = 'Cardboard recyclable'
                 elif pred_label == 'recyclable':
-                    self.output_screen('Other recyclable')
+                    lcd_content = 'Other recyclable'
                 elif pred_label == 'non-recyclable':
-                    self.output_screen('Non-recyclable')
+                    lcd_content = 'Non-recyclable'
                 else:
-                    self.output_screen('Error, dump into trash')
+                    lcd_content = 'Error, dump into trash'
                     pred_label = 'non-recyclable'
 
+                self.output_screen(lcd_content)
                 self.move_to_bin(pred_label)
 
 
