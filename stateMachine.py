@@ -16,7 +16,9 @@ import time
 
 import sys
 sys.path.insert(1, './interface') # path to the interface
-import interfaceWebApp
+from interfaceWebApp import WebInterface
+
+print("123123")
 
 avg_window = []
 usread_window_size = 5
