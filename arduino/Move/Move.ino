@@ -23,6 +23,8 @@ void loop() {
     else {
       stop_all();
     } 
+    Serial.print("You sent me: ");
+    Serial.println(data);
   }
 }
 
