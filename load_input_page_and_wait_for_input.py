@@ -6,8 +6,12 @@ import os
 
 os.environ['DISPLAY'] = ':0.0'
 
+import pyautogui
+
 from selenium import webdriver
 driver = webdriver.Firefox()
+driver.maximize_window()
+pyautogui.press('f11')
 
 driver.get('http://localhost:5000/getUserInput')
 
@@ -20,3 +24,4 @@ while True:
     else:
         time.sleep(1)
 
+driver.close()
