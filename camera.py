@@ -1,3 +1,6 @@
+import pyaudio
+import wave
+
 import numpy as np
 import subprocess
 import re
@@ -48,6 +51,10 @@ class Camera():
             print('warning: dimensions dont match settings', arr.shape, (height, width, 3))
         self.loop_thread = Thread(target=self._capture_loop)
         self.loop_thread.start()
+        self.audio_buffer = []
+        self.audio_buffer_size = 20
+        self.audio_thread = Thread(target=self._record_loop)
+        self.audio_thread.start()
 
     def _capture_loop(self):
         print('starting capture loop')
@@ -62,3 +69,37 @@ class Camera():
 
     def capture(self):
         return self.current_image
+
+    def _record_loop(self):
+        print('starting record loop')
+        audio = pyaudio.PyAudio()
+        dname = lambda i: audio.get_device_info_by_index(i).get('name')
+        index = [
+            i for i in range(audio.get_device_count())
+            if 'USB' in dname(i)
+        ][0]
+        print('use audio device', index, dname(index))
+
+        # strangely 44100 doesnt work on c270?, use the next common samplerate
+        format = pyaudio.paInt16
+        rate = 48000
+        channels = 1
+        buffer_size = 12000
+        stream = audio.open(
+            format = format,
+            rate = rate,
+            channels = channels,
+            frames_per_buffer = buffer_size,
+            input_device_index = index,
+            input = True,
+        )
+        while True:
+            self.audio_buffer.append( stream.read(buffer_size, exception_on_overflow = False) )
+            if len(self.audio_buffer) > self.audio_buffer_size:
+                self.audio_buffer.pop(0)
+
+    def record(self):
+        return np.frombuffer(self.record_binary(), dtype=np.int16)
+
+    def record_binary(self):
+        return b''.join(self.audio_buffer)
