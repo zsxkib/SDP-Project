@@ -8,7 +8,7 @@ def read():
 if (__name__=='__main__'):
 	ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 	ser.flush()
-	ser.write(b"move_front\n")
+	ser.write("move_front")
 	sleep(2)
 	read()
 	ser.write(b"stop_motors\n")
@@ -20,6 +20,6 @@ if (__name__=='__main__'):
 	ser.write(b"hatch\n")
 	sleep(2)
 	read()
-	ser.write(b"stop_motors\n")
+	ser.write("stop_motors")
 	sleep(2)
 	read()
