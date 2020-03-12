@@ -23,6 +23,3 @@ if (__name__=='__main__'):
 	ser.write(b"stop_motors")
 	sleep(2)
 	read()
-	ser.write("stop_motors")
-	sleep(2)
-	read()

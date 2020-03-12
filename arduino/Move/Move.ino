@@ -26,7 +26,7 @@ void loop() {
       stop_all();
     } 
     move_front();
-    delay(2000);
+    delay(100);
     stop_all();
     Serial.print("You sent me: ");
     Serial.println(data);
