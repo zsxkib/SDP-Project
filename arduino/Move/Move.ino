@@ -9,25 +9,25 @@ void setup() {
 void loop() {
   if (Serial.available()>0){
     String data = Serial.readStringUntil('\n');
-    if (data.equals("move_front")){
-      Serial.print("You sent me: hello");
-      move_front();
-    }
-    else if (data.equals("move_back")){
-      move_back();
-    }
-    else if (data.equals("hatch")){
-      hatch();
-    }
-    else if (data.equals("stop_motors")){
-      stop_motors();
-    }
-    else {
-      stop_all();
-    } 
-    move_front();
-    delay(100);
-    stop_all();
+//    if (data.equals("move_front")){
+//      Serial.print("You sent me: hello");
+//      move_front();
+//    }
+//    else if (data.equals("move_back")){
+//      move_back();
+//    }
+//    else if (data.equals("hatch")){
+//      hatch();
+//    }
+//    else if (data.equals("stop_motors")){
+//      stop_motors();
+//    }
+//    else {
+//      stop_all();
+//    } 
+//    move_front();
+//    delay(500);
+//    stop_all();
     Serial.print("You sent me: ");
     Serial.println(data);
   }
