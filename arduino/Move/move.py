@@ -8,6 +8,10 @@ def read():
 if (__name__=='__main__'):
 	ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 	ser.flush()
+	ser.write(b"hi\n")
+	sleep(2)
+	read()
+
 	ser.write(b"move_front\n")
 	sleep(2)
 	read()
