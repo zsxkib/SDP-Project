@@ -5,6 +5,7 @@ from sense import *
 from web_client import WebClient # ML server
 from grovepi import *
 import grove_rgb_lcd as lcd
+import wave
 
 import select
 import sys
@@ -16,7 +17,7 @@ import time
 
 import sys
 sys.path.insert(1, './interface') # path to the interface
-from interfaceWebApp import WebInterface
+#from interfaceWebApp import WebInterface
 
 print("123123")
 
@@ -30,6 +31,9 @@ def usread():
     while len(avg_window) < usread_window_size:
         avg_window.append( grovepi.ultrasonicRead(usread_port) )
     return sum(avg_window) / usread_window_size
+
+n_collects = 0
+collect_mode = False # change this to collect sample
 
 class Recycltron:
     States = {
@@ -152,6 +156,9 @@ class Recycltron:
 
 
     def run(self):
+        global n_collects
+        global collect_mode
+
         # the main loop:
         while True:
             print(f'State update: {self.state}')
@@ -183,11 +190,26 @@ class Recycltron:
                 self.output_screen('Processing      item')
                 # image_top = camera_top.capture()
                 image_top = image_side = self.camera_side.capture()
-                plt.imsave('top.png', image_top)
-                plt.imsave('side.png', image_side)
+                sound_clip = self.camera_side.record_binary()
+
+                if collect_mode:
+                    n_collects += 1
+                    with wave.open(f'collects/{n_collects}.wav', 'wb') as wavefile:
+                        wavefile.setnchannels(1)
+                        wavefile.setsampwidth(2) # s16_le
+                        wavefile.setframerate(48000)
+                        wavefile.writeframes(sound_clip)
+                    plt.imsave(f'collects/{n_collects}.png', image_top)
+                    print('collected sample', n_collects)
+                #plt.imsave('top.png', image_top)
+                #plt.imsave('side.png', image_side)
 
                 # TODO: fix here
-                pred_label = self.MLServer.classify(image_top=image_top, image_side=image_side)
+                if collect_mode:
+                    pred_label = 'trash'
+                else:
+                    pred_label = self.MLServer.classify(image_top=image_top, image_side=image_side)
+
                 print(f'the predicted label is {pred_label}')
                 if pred_label == 'metal':
                     pred_label = 'metal'
@@ -209,7 +231,8 @@ class Recycltron:
                     pred_label = 'non-recyclable'
 
                 self.output_screen(lcd_content)
-                self.move_to_bin(pred_label)
+                if not collect_mode:
+                    self.move_to_bin(pred_label)
 
 
 
