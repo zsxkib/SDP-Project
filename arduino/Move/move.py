@@ -3,9 +3,9 @@ from time import sleep
 
 
 
-def read():
-	line = ser.readline().decode('utf-8').rstrip()
-	print(line)
+#def read():
+#	line = ser.readline().decode('utf-8').rstrip()
+#	print(line)
 
 if (__name__=='__main__'):
 	ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
