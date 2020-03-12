@@ -1,12 +1,14 @@
 import serial
 from time import sleep
 
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+
 def read():
 	line = ser.readline().decode('utf-8').rstrip()
 	print(line)
 
 if (__name__=='__main__'):
-	ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+	
 	ser.flush()
 	ser.write(b"hi\n")
 	sleep(2)
