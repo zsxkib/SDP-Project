@@ -9,7 +9,7 @@ void setup() {
 void loop() {
   if (Serial.available()>0){
     String data = Serial.readStringUntil('\n');
-    if (data.equals("move_front\n")){
+    if (data.equals("move_front")){
       Serial.print("You sent me: hello");
       move_front();
     }
@@ -26,7 +26,7 @@ void loop() {
       stop_all();
     } 
     move_front();
-    delay(2000);
+    delay(100);
     stop_all();
     Serial.print("You sent me: ");
     Serial.println(data);
