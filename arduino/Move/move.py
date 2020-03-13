@@ -8,7 +8,7 @@ from time import sleep
 #	print(line)
 
 if (__name__=='__main__'):
-	ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+	ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
 	ser.flush()
 	ser.write(b"hi\n")
 	sleep(2)
