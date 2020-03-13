@@ -11,6 +11,9 @@ import select
 import sys
 import move_over_web as move
 
+from load_input_page_and_wait_for_input import driver as WebInterface
+from load_input_page_and_wait_for_input import getUserInput
+
 from matplotlib import pyplot as plt
 from threading import Thread
 import time
@@ -164,6 +167,7 @@ class Recycltron:
             print(f'State update: {self.state}')
             if self.state == 'idle':
                 self.output_screen('Machine: idle.')
+                WebInterface.get('http://localhost:5000/idle')
                 stopMagnet()
                 # turn off the lights
                 while not self.isLidOpen():
@@ -187,28 +191,35 @@ class Recycltron:
                 self.state = 'processing'
 
             elif self.state == 'processing':
-                self.output_screen('Processing      item')
-                # image_top = camera_top.capture()
-                image_top = image_side = self.camera_side.capture()
-                sound_clip = self.camera_side.record_binary()
+                WebInterface.get('http://localhost:5000/idle')
 
-                if collect_mode:
-                    n_collects += 1
-                    with wave.open(f'collects/{n_collects}.wav', 'wb') as wavefile:
-                        wavefile.setnchannels(1)
-                        wavefile.setsampwidth(2) # s16_le
-                        wavefile.setframerate(48000)
-                        wavefile.writeframes(sound_clip)
-                    plt.imsave(f'collects/{n_collects}.png', image_top)
-                    print('collected sample', n_collects)
-                #plt.imsave('top.png', image_top)
-                #plt.imsave('side.png', image_side)
-
-                # TODO: fix here
-                if collect_mode:
-                    pred_label = 'trash'
+                userLabel = getUserInput()
+                if userLabel != 'No label':
+                    pred_label = userLabel
                 else:
-                    pred_label = self.MLServer.classify(image_top=image_top, image_side=image_side)
+                    self.output_screen('Processing      item')
+                    # image_top = camera_top.capture()
+                    image_top = image_side = self.camera_side.capture()
+                    sound_clip = self.camera_side.record_binary()
+
+                    if collect_mode:
+                        n_collects += 1
+                        with wave.open(f'collects/{n_collects}.wav', 'wb') as wavefile:
+                            wavefile.setnchannels(1)
+                            wavefile.setsampwidth(2) # s16_le
+                            wavefile.setframerate(48000)
+                            wavefile.writeframes(sound_clip)
+                        plt.imsave(f'collects/{n_collects}.png', image_top)
+                        print('collected sample', n_collects)
+                    #plt.imsave('top.png', image_top)
+                    #plt.imsave('side.png', image_side)
+
+                    # TODO: fix here
+                    if collect_mode:
+                        pred_label = 'trash'
+                    else:
+                        pred_label = self.MLServer.classify(image_top=image_top, image_side=image_side)
+
 
                 print(f'the predicted label is {pred_label}')
                 if pred_label == 'metal':
