@@ -58,6 +58,7 @@ void hatch(){
 
 void stop_motors(){
   motorStop(5);
+  motorStop(1);
 }
 
 void stop_all(){
