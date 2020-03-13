@@ -35,7 +35,7 @@ if (__name__=='__main__'):
 	#read()
 	line = ser.readline().decode('utf-8').rstrip()
 	print(line)
-	ser.write(b"stop_motors")
+	ser.write(b"stop_motors\n")
 	sleep(2)
 	#read()
 	line = ser.readline().decode('utf-8').rstrip()
