@@ -60,6 +60,12 @@ def index():
 
 @app.route('/getUserInput', methods=['POST', 'GET'])
 def page_input():
+    if request.method == 'POST':
+        print("detected post request")
+        print(request.form)
+        print(request.form.get('c1'))
+    elif request.method == 'GET':
+        pass
     return render_template('touchscreen_select_category.html')
 
 @app.route('/idle', methods=['GET'])

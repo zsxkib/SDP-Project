@@ -27,9 +27,13 @@
             <button type="button" class="btn btn-outline-warning" onclick="window.location.href='getUserInput#glass'">Glass</button>	
 
         </div>
-        <div class="touchscreen-select-row touchscreen-row-1">
-            <button type="button" class="btn btn-outline-danger " onclick="window.location.href='getUserInput#trash'">Non-recyclable</button>
-        </div>
+        <form action="http://127.0.0.1:5000/getUserInput" method="POST">
+            <div class="touchscreen-select-row touchscreen-row-1">
+                <input name="c1" value="123" hidden/>
+                <button type="submit" class="btn btn-outline-danger" onclick="window.location.href='getUserInput#trash'" value='submit'>Non-recyclable</button>
+                <!-- <button type="button" class="btn btn-outline-danger " onclick="window.location.href='getUserInput#trash'">Non-recyclable</button> -->
+            </div>
+        </form>
     </div>
 </div>
 
